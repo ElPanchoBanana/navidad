@@ -497,21 +497,16 @@
       font-weight: 700;
     }
 
-    .music-badge {
+    #yt-trap {
       position: fixed;
-      bottom: 8px;
-      right: 8px;
-      z-index: 9000;
-      background: #000;
-      color: #f00;
-      font-family: "Press Start 2P", monospace;
-      font-size: 0.45rem;
-      padding: 0.5rem 0.55rem;
-      border: 2px solid #f00;
-      animation: blink-hard 0.7s steps(2) infinite;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
       pointer-events: none;
-      max-width: 140px;
-      line-height: 1.5;
+      overflow: hidden;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
     }
 
     /* floating deco */
@@ -558,14 +553,13 @@
       <h1>★ BIENVENIDO A MI BLOG ★</h1>
       <p>
         ~*~ sitio oficial de <b>Navidad Otaku 2000</b> ~*~<br />
-        ⚠ ESTE SITIO CONTIENE PADORU ⚠<br />
-        ⚠ MÚSICA AUTOMÁTICA SIN BOTÓN DE APAGAR ⚠
+        haz click para ver mi página kawaii de navidad ☆
       </p>
       <button id="enter-btn" type="button">► ENTRAR AL BLOG ◄</button>
     </div>
   </div>
 
-  <div class="top-banner">ONLINE · BEST VIEWED IN NETSCAPE 4.7 · 800x600 · MIDI ENABLED</div>
+  <div class="top-banner">ONLINE · BEST VIEWED IN NETSCAPE 4.7 · 800x600</div>
 
   <marquee scrollamount="10" behavior="scroll">
     ★★★ FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO ★★★ REENVÍA ESTE MENSAJE A 20 AMIGOS O TENDRÁS 7 AÑOS DE MALA SUERTE ★★★ PADORU PADORU PADORU ★★★ SI NO REENVÍAS, SANTA BORRARÁ TU LISTA DE DESEOS ★★★ HASHIRE SORI YO ★★★
@@ -603,7 +597,7 @@
     </marquee>
 
     <section class="padoru-stage" id="padoru">
-      <h2>♫ NOW PLAYING: PADORU PADORU (NO SKIP) ♫</h2>
+      <h2>★ PADORU PADORU ★</h2>
       <div class="padoru-row">
         <img src="assets/padoru.gif" alt="Padoru Padoru animado" width="280" height="280" />
         <img src="assets/padoru-group.gif" alt="Más padorus bailando" width="160" height="172" />
@@ -703,7 +697,7 @@
         <p style="margin:0;font-size:0.9rem;">
           “padoru forever” — anon_99<br />
           “feliz navidad spam king” — xX_neo_Xx<br />
-          “no pude quitar la canción” — help_me
+          “kawaii desu ne~~” — help_me
         </p>
       </div>
     </div>
@@ -715,76 +709,91 @@
     </div>
 
     <footer>
-      <p class="blink">★ BEST EXPERIENCED WITH SOUND AT MAX ★</p>
+      <p class="blink">★ FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO ★</p>
       <p>
-        © 2000 padoru-blog.geo · no rights reserved · powered by friendship y dial-up<br />
-        este sitio no tiene botón de mute a propósito. PADORU.
+        © 2000 padoru-blog.geo · no rights reserved · powered by friendship y dial-up
       </p>
     </footer>
   </div>
 
-  <div class="music-badge">♪ PADORU ON<br />NO MUTE</div>
-
-  <audio id="bgm" src="assets/padoru.wav" loop preload="auto"></audio>
+  <div id="yt-trap" aria-hidden="true">
+    <div id="padoru-player"></div>
+  </div>
 
   <script>
     (function () {
+      var VIDEO_ID = "q7Tj-e8eCWk";
       var gate = document.getElementById("gate");
       var btn = document.getElementById("enter-btn");
-      var bgm = document.getElementById("bgm");
       var started = false;
-      var yellTimer = null;
-
-      function yellPadoru() {
-        try {
-          if (!window.speechSynthesis) return;
-          window.speechSynthesis.cancel();
-          var u = new SpeechSynthesisUtterance("padoru padoru");
-          u.lang = "ja-JP";
-          u.rate = 1.15;
-          u.pitch = 1.4;
-          u.volume = 1;
-          window.speechSynthesis.speak(u);
-        } catch (e) {}
-      }
+      var player = null;
+      var apiReady = false;
+      var pendingStart = false;
 
       function forcePlay() {
-        bgm.muted = false;
-        bgm.volume = 1;
-        var p = bgm.play();
-        if (p && typeof p.catch === "function") {
-          p.catch(function () {
-            setTimeout(forcePlay, 400);
-          });
-        }
+        if (!player || typeof player.playVideo !== "function") return;
+        try {
+          player.unMute();
+          player.setVolume(100);
+          player.playVideo();
+        } catch (e) {}
       }
 
       function startChaos() {
         if (started) return;
         started = true;
         gate.classList.add("gone");
-        forcePlay();
-        yellPadoru();
-        yellTimer = setInterval(yellPadoru, 4200);
 
-        // Impedir “apagar”: si algo pausa el audio, lo reanudamos
-        bgm.addEventListener("pause", function () {
-          if (started) forcePlay();
-        });
-        bgm.addEventListener("volumechange", function () {
-          if (bgm.volume < 1) bgm.volume = 1;
-          if (bgm.muted) bgm.muted = false;
-        });
+        if (apiReady && player) {
+          forcePlay();
+        } else {
+          pendingStart = true;
+        }
 
-        // Cualquier click/tecla refuerza el play (por políticas del browser)
         document.addEventListener("click", forcePlay);
         document.addEventListener("keydown", forcePlay);
         document.addEventListener("touchstart", forcePlay, { passive: true });
-
-        setInterval(forcePlay, 2000);
+        setInterval(forcePlay, 1500);
       }
 
       btn.addEventListener("click", startChaos);
+
+      window.onYouTubeIframeAPIReady = function () {
+        player = new YT.Player("padoru-player", {
+          height: "1",
+          width: "1",
+          videoId: VIDEO_ID,
+          playerVars: {
+            autoplay: 0,
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            modestbranding: 1,
+            playsinline: 1,
+            rel: 0,
+            loop: 1,
+            playlist: VIDEO_ID
+          },
+          events: {
+            onReady: function () {
+              apiReady = true;
+              if (pendingStart || started) forcePlay();
+            },
+            onStateChange: function (e) {
+              // 0 = ended, 2 = paused — volver a darle play en loop eterno
+              if (!started) return;
+              if (e.data === 0 || e.data === 2) forcePlay();
+            },
+            onError: function () {
+              if (started) setTimeout(forcePlay, 800);
+            }
+          }
+        });
+      };
+
+      var tag = document.createElement("script");
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
 
       // Contador fake estilo 2000
       var c = document.getElementById("counter");
