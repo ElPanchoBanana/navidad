@@ -190,22 +190,80 @@ function initHubMusic() {
   const theme = new Audio("assets/hub-theme.mp3");
   theme.loop = true;
   theme.preload = "auto";
-  theme.volume = 0.5;
+  theme.volume = 0.65;
+
+  const gate = document.getElementById("music-gate");
+  const startBtn = document.getElementById("music-start");
+  const toggleBtn = document.getElementById("music-toggle");
+  let started = false;
+  let userPaused = false;
+
+  const setPlayingUI = (playing) => {
+    if (gate) gate.classList.toggle("is-gone", playing || started);
+    if (toggleBtn) {
+      toggleBtn.hidden = !started && !playing;
+      toggleBtn.setAttribute("aria-pressed", playing ? "true" : "false");
+      toggleBtn.textContent = playing ? "♪ Pausar" : "♪ Música";
+    }
+  };
 
   const tryPlay = () => {
+    userPaused = false;
     const p = theme.play();
-    if (p && typeof p.catch === "function") p.catch(function () {});
+    if (p && typeof p.then === "function") {
+      return p
+        .then(() => {
+          started = true;
+          setPlayingUI(true);
+          return true;
+        })
+        .catch(() => {
+          setPlayingUI(false);
+          return false;
+        });
+    }
+    started = !theme.paused;
+    setPlayingUI(!theme.paused);
+    return Promise.resolve(!theme.paused);
   };
 
-  // Intento automático; si el navegador bloquea, se desbloquea al primer toque
+  // Intento automático al cargar (puede fallar por políticas del navegador)
   tryPlay();
-  const unlock = () => {
+
+  if (startBtn) {
+    startBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      tryPlay();
+    });
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (theme.paused) tryPlay();
+      else {
+        userPaused = true;
+        theme.pause();
+        setPlayingUI(false);
+      }
+    });
+  }
+
+  // Primer toque desbloquea si el autoplay fue bloqueado
+  const unlockOnce = () => {
+    if (started || userPaused) return;
     tryPlay();
-    document.removeEventListener("click", unlock);
-    document.removeEventListener("touchstart", unlock);
   };
-  document.addEventListener("click", unlock);
-  document.addEventListener("touchstart", unlock, { passive: true });
+  document.addEventListener("click", unlockOnce);
+  document.addEventListener("touchstart", unlockOnce, { passive: true });
+
+  theme.addEventListener("playing", () => {
+    started = true;
+    setPlayingUI(true);
+  });
+  theme.addEventListener("pause", () => {
+    if (!theme.ended) setPlayingUI(false);
+  });
 
   window.hubTheme = theme;
 }
