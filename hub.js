@@ -194,75 +194,72 @@ function initHubMusic() {
 
   const gate = document.getElementById("music-gate");
   const startBtn = document.getElementById("music-start");
-  const toggleBtn = document.getElementById("music-toggle");
-  let started = false;
-  let userPaused = false;
+  let unlocked = false;
 
-  const setPlayingUI = (playing) => {
-    if (gate) gate.classList.toggle("is-gone", playing || started);
-    if (toggleBtn) {
-      toggleBtn.hidden = !started && !playing;
-      toggleBtn.setAttribute("aria-pressed", playing ? "true" : "false");
-      toggleBtn.textContent = playing ? "♪ Pausar" : "♪ Música";
+  const lockMap = () => {
+    unlocked = false;
+    if (gate) {
+      gate.classList.remove("is-gone");
+      gate.setAttribute("aria-hidden", "false");
     }
+    if (startBtn) {
+      startBtn.disabled = false;
+      startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
+    }
+    document.body.classList.add("music-locked");
   };
 
-  const tryPlay = () => {
-    userPaused = false;
+  const unlockMap = () => {
+    unlocked = true;
+    if (gate) {
+      gate.classList.add("is-gone");
+      gate.setAttribute("aria-hidden", "true");
+    }
+    document.body.classList.remove("music-locked");
+  };
+
+  const startMusic = () => {
+    if (startBtn) {
+      startBtn.disabled = true;
+      startBtn.textContent = "CARGANDO…";
+    }
     const p = theme.play();
+    const fail = () => {
+      if (startBtn) {
+        startBtn.disabled = false;
+        startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
+      }
+      lockMap();
+    };
     if (p && typeof p.then === "function") {
       return p
         .then(() => {
-          started = true;
-          setPlayingUI(true);
+          unlockMap();
+          if (startBtn) startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
           return true;
         })
-        .catch(() => {
-          setPlayingUI(false);
-          return false;
-        });
+        .catch(fail);
     }
-    started = !theme.paused;
-    setPlayingUI(!theme.paused);
-    return Promise.resolve(!theme.paused);
+    if (!theme.paused) unlockMap();
+    else fail();
+    return Promise.resolve(unlocked);
   };
 
-  // Intento automático al cargar (puede fallar por políticas del navegador)
-  tryPlay();
+  // Obligatorio: el mapa queda bloqueado hasta que suene la canción
+  lockMap();
 
   if (startBtn) {
     startBtn.addEventListener("click", (e) => {
+      e.preventDefault();
       e.stopPropagation();
-      tryPlay();
+      startMusic();
     });
   }
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      if (theme.paused) tryPlay();
-      else {
-        userPaused = true;
-        theme.pause();
-        setPlayingUI(false);
-      }
-    });
-  }
-
-  // Primer toque desbloquea si el autoplay fue bloqueado
-  const unlockOnce = () => {
-    if (started || userPaused) return;
-    tryPlay();
-  };
-  document.addEventListener("click", unlockOnce);
-  document.addEventListener("touchstart", unlockOnce, { passive: true });
-
-  theme.addEventListener("playing", () => {
-    started = true;
-    setPlayingUI(true);
-  });
+  theme.addEventListener("playing", unlockMap);
   theme.addEventListener("pause", () => {
-    if (!theme.ended) setPlayingUI(false);
+    // Si deja de sonar, el mapa se bloquea otra vez
+    if (!theme.ended) lockMap();
   });
 
   window.hubTheme = theme;
