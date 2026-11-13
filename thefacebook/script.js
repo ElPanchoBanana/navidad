@@ -18,12 +18,6 @@ const gifts = [
     image: "https://m.media-amazon.com/images/I/81MPVsbYeFL._SY466_.jpg",
   },
   {
-    title: "Ensayo sobre la ceguera",
-    note: "Libro — José Saramago",
-    link: "https://www.amazon.com.mx/Ensayo-sobre-ceguera-Jos%C3%A9-Saramago/dp/607313911X/ref=sr_1_1?crid=26U8AULQ7WSJ7&dib=eyJ2IjoiMSJ9.z71xkFK7Gv8HHri4t6nw8DmnU3ouYDADyW4pMm9MCIDsL3E5yxf-FlHghTdccRsC_HnOAlo-1hP_gnhJ-0uI_U99vR0ACcR6p0AGYol2y5Bgw_b7RDv4wMHFjl8zadvHQOEOi9ykN_xVyATjxamv8rxCu6YZd0ms1JZONBmBHaTfOBksdEJParI0YVjayj8i1z_Bdbwf-7_LqK487iATvmZw9It8O20A05juBcG-hwv33b_41a5b1gAKVgxUG_QcbpeUzIsGx10FWofVmhtqCsaMePTvVA3bQu5wYEkgSmw.vBcjoLmtUF1KfqbZH0nemqgGr7ro2wgTQujtGG2rZjU&dib_tag=se&keywords=ensayo+sobre+la+ceguera&qid=1794581601&sprefix=ensayo+so%2Caps%2C158&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b",
-    image: "https://m.media-amazon.com/images/I/71BDg0r665L._SY466_.jpg",
-  },
-  {
     title: "Kit de 10 puntas intercambiables",
     note: "Leatherman",
     link: "https://leatherman.com.mx/products/kit-de-10-puntas-intercambiables?variant=41898008903735",
