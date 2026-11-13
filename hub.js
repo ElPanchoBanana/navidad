@@ -192,75 +192,17 @@ function initHubMusic() {
   theme.preload = "auto";
   theme.volume = 0.65;
 
-  const gate = document.getElementById("music-gate");
-  const startBtn = document.getElementById("music-start");
-  let unlocked = false;
-
-  const lockMap = () => {
-    unlocked = false;
-    if (gate) {
-      gate.classList.remove("is-gone");
-      gate.setAttribute("aria-hidden", "false");
-    }
-    if (startBtn) {
-      startBtn.disabled = false;
-      startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
-    }
-    document.body.classList.add("music-locked");
-  };
-
-  const unlockMap = () => {
-    unlocked = true;
-    if (gate) {
-      gate.classList.add("is-gone");
-      gate.setAttribute("aria-hidden", "true");
-    }
-    document.body.classList.remove("music-locked");
-  };
-
-  const startMusic = () => {
-    if (startBtn) {
-      startBtn.disabled = true;
-      startBtn.textContent = "CARGANDO…";
-    }
+  const play = () => {
     const p = theme.play();
-    const fail = () => {
-      if (startBtn) {
-        startBtn.disabled = false;
-        startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
-      }
-      lockMap();
-    };
-    if (p && typeof p.then === "function") {
-      return p
-        .then(() => {
-          unlockMap();
-          if (startBtn) startBtn.textContent = "► ESCUCHAR BURRITO SABANERO ◄";
-          return true;
-        })
-        .catch(fail);
-    }
-    if (!theme.paused) unlockMap();
-    else fail();
-    return Promise.resolve(unlocked);
+    if (p && typeof p.catch === "function") p.catch(() => {});
   };
 
-  // Obligatorio: el mapa queda bloqueado hasta que suene la canción
-  lockMap();
-
-  if (startBtn) {
-    startBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      startMusic();
-    });
-  }
-
-  theme.addEventListener("playing", unlockMap);
-  theme.addEventListener("pause", () => {
-    // Si deja de sonar, el mapa se bloquea otra vez
-    if (!theme.ended) lockMap();
-  });
+  play();
+  // Si el navegador bloquea autoplay, arranca en el primer gesto sin preguntar
+  const unlock = () => play();
+  document.addEventListener("pointerdown", unlock, { passive: true });
+  document.addEventListener("keydown", unlock);
+  document.addEventListener("touchstart", unlock, { passive: true });
 
   window.hubTheme = theme;
 }
