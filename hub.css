@@ -148,8 +148,35 @@ body {
   }
 }
 
+@keyframes sleigh-fly {
+  0% { transform: translate(-40vw, 10vh); }
+  25% { transform: translate(30vw, 60vh); }
+  50% { transform: translate(110vw, 25vh); }
+  50.01% { transform: translate(110vw, 80vh) scaleX(-1); }
+  75% { transform: translate(40vw, 40vh) scaleX(-1); }
+  100% { transform: translate(-40vw, 70vh) scaleX(-1); }
+}
+
+.sleigh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  font-size: 2.2rem;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: sleigh-fly 24s linear infinite;
+  filter: drop-shadow(0 0 6px #ffd700);
+}
+
 .maplibregl-ctrl-attrib {
   font-size: 10px;
+  color: #c8d0d8 !important;
+  background: rgba(10, 16, 24, 0.65) !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: #9ecbff !important;
 }
 
 .maplibregl-ctrl-group {

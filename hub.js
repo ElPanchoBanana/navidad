@@ -157,7 +157,7 @@ function setPlacePhoto(id, photoUrl) {
 function initMap() {
   const map = new maplibregl.Map({
     container: "map",
-    style: "https://tiles.openfreemap.org/styles/liberty",
+    style: "https://tiles.openfreemap.org/styles/dark",
     center: [-103.3496, 20.6597],
     zoom: 10.5,
     pitch: 28,
