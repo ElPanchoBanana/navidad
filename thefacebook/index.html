@@ -1,27 +1,196 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>thefaceboock — Intercambio Navideño 1999</title>
-    <meta name="description" content="Mi homepage de Navidad estilo thefacebook 1999 / Y2K" />
-    <meta name="author" content="thefaceboock" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>thefaceboock — Intercambio Navideño 1999</title>
+  <meta name="description" content="Mi homepage de Navidad estilo thefacebook 1999 / Y2K" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Welcome dialog -->
+  <div id="welcome-overlay" class="fixed inset-0 z-50 bg-black/80" aria-hidden="false">
+    <div class="win-bevel fixed left-[50%] top-[50%] z-50 grid w-full max-w-md translate-x-[-50%] translate-y-[-50%] gap-2 rounded-none border-0 bg-[#c0c0c0] p-0 text-center shadow-[4px_4px_0_#000]">
+      <div class="flex items-center justify-between bg-primary px-2 py-1 text-left text-primary-foreground">
+        <span class="font-bold">thefaceboock.exe — Welcome</span>
+        <button type="button" id="welcome-x" class="retro-btn px-1 leading-none" aria-label="Cerrar">X</button>
+      </div>
+      <div class="flex flex-col space-y-2 px-4 pb-2 pt-3 text-center">
+        <div class="text-5xl">🎅🎄🎁</div>
+        <h2 class="text-center text-xl font-bold text-primary neon-pulse">¡Feliz Navidad y Próspero Año Nuevo!</h2>
+        <p class="text-center text-sm text-foreground">
+          Que la magia de estas fiestas llene tu hogar de alegría ✨
+          <br />
+          <span class="rainbow-text text-base">~*~ Y2K Edition ~*~</span>
+        </p>
+      </div>
+      <div class="px-4 pb-4">
+        <button type="button" id="welcome-ok" class="retro-btn mx-auto block px-6 py-1 font-semibold">Ver regalos 🎁</button>
+        <p class="mt-2 text-[10px] text-muted-foreground">Click OK to enter my homepage</p>
+      </div>
+    </div>
+  </div>
 
-    <meta property="og:title" content="0e052eb7-1a29-4df7-9662-2e35c42a59db" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <div class="min-h-screen py-4">
+    <div class="sleigh" aria-hidden="true"><span style="display:inline-block;transform:scaleX(-1)">🦌🦌🦌🛷🎅</span></div>
+    <audio id="bg-music" src="https://s3.zapopan.gob.mx/geomatica/AMIGOSECRETO/luismi.mp3" loop></audio>
+    <div id="snow"></div>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <div class="site-frame mx-auto max-w-[800px] bg-card">
+      <header class="flex items-end justify-between bg-primary px-3 pb-1 pt-3 text-primary-foreground">
+        <div class="logo-chrome">[ thefaceboock ] <span class="text-base">🎄</span></div>
+        <nav class="flex flex-wrap justify-end gap-3 text-[11px]">
+          <a href="#" class="text-primary-foreground hover:underline">home</a>
+          <a href="#" class="text-primary-foreground hover:underline">search</a>
+          <a href="#" class="text-primary-foreground hover:underline">global</a>
+          <a href="#" class="text-primary-foreground hover:underline">navidad</a>
+          <a href="#" class="text-primary-foreground hover:underline">invite</a>
+          <a href="#" class="text-primary-foreground hover:underline">faq</a>
+          <a href="#" class="text-primary-foreground hover:underline">logout</a>
+        </nav>
+      </header>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+      <div class="construction-stripe px-2 py-0.5 text-center text-[10px]">
+        ★★★ SITIO EN CONSTRUCCIÓN ★★★ — last updated: 12/24/1999 — MIDI autoplay ON
+      </div>
+
+      <div class="marquee-track bg-accent px-0 py-0.5 text-accent-foreground">
+        <span>
+          <span class="blink">★</span> ¡Feliz Navidad 1999! Faltan pocos días para el intercambio &nbsp;·&nbsp;
+          Welcome to my homepage &nbsp;·&nbsp; Y2K ready ✔ &nbsp;·&nbsp; Guest book open &nbsp;·&nbsp;
+          <span class="blink">★</span> ¡Haz clic en un regalo y envíamelo! &nbsp;&nbsp;&nbsp;
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-3 p-3 md:grid-cols-[130px_1fr_150px]">
+        <aside>
+          <div class="mb-2">
+            <input class="retro-input w-full" placeholder="quick search" />
+            <button type="button" class="retro-btn mt-1">go</button>
+          </div>
+          <ul class="space-y-0.5 text-primary">
+            <li><a href="#" class="hover:underline">» My Profile [ edit ]</a></li>
+            <li><a href="#" class="hover:underline">» My Friends</a></li>
+            <li><a href="#" class="hover:underline">» My Wishlist 🎁</a></li>
+            <li><a href="#" class="hover:underline">» My Messages</a></li>
+            <li><a href="#" class="hover:underline">» My Privacy</a></li>
+            <li><a href="#" class="hover:underline">» Guestbook</a></li>
+          </ul>
+          <div class="mt-4 win-bevel bg-festive p-2 text-center text-festive-foreground">
+            🎅 Mejor visto en Netscape Navigator 4.0 a 800x600
+          </div>
+          <div class="mt-3 text-center">
+            <div class="mb-1 text-muted-foreground">visitors since 1999</div>
+            <div class="hit-counter inline-block">0001337</div>
+          </div>
+          <div class="under-construction mt-3 text-center text-xs">
+            <div class="rainbow-text">~*~ under construction ~*~</div>
+            <div class="mt-1">🚧 🚧 🚧</div>
+          </div>
+        </aside>
+
+        <main>
+          <div class="mb-3 bg-primary px-2 py-1 font-bold text-primary-foreground">
+            Profile (This is you) — Intercambio Navideño <span class="neon-pulse float-right font-normal">● ONLINE</span>
+          </div>
+
+          <section class="win-bevel mb-3 bg-card">
+            <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+              <span>Cuenta regresiva</span>
+            </div>
+            <div class="p-2">
+              <div class="grid grid-cols-2 gap-2" id="countdown"></div>
+            </div>
+          </section>
+
+          <div class="grid gap-3 sm:grid-cols-[200px_1fr]">
+            <div>
+              <section class="win-bevel mb-3 bg-card">
+                <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+                  <span>Picture</span><span class="font-normal">[ edit ]</span>
+                </div>
+                <div class="p-2">
+                  <div class="win-inset flex h-40 items-center justify-center bg-muted text-6xl">🎅</div>
+                  <p class="mt-1 text-center text-muted-foreground">no photo uploaded.exe</p>
+                </div>
+              </section>
+              <section class="win-bevel mb-3 bg-card">
+                <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+                  <span>Connection</span>
+                </div>
+                <div class="p-2"><p class="text-center">Este es mi perfil de regalos.</p></div>
+              </section>
+              <section class="win-bevel mb-3 bg-card">
+                <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+                  <span>Mood</span>
+                </div>
+                <div class="p-2"><p class="text-center rainbow-text">Festivo ☃️</p></div>
+              </section>
+            </div>
+
+            <div>
+              <section class="win-bevel mb-3 bg-card">
+                <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+                  <span>Information</span><span class="font-normal">[ edit ]</span>
+                </div>
+                <div class="p-2">
+                  <b>Account Info:</b>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">Name:</span><span class="text-primary">Luis Alberto</span></div>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">Member Since:</span><span class="text-primary">December 1, 1999</span></div>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">Status:</span><span class="text-primary"><span class="blink">Esperando a Santa</span></span></div>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">Looking For:</span><span class="text-primary">Regalos de intercambio</span></div>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">Interests:</span><span class="text-primary">La vida es muy corta</span></div>
+                  <div class="grid grid-cols-[120px_1fr] gap-2 py-0.5 border-b border-dotted border-border"><span class="text-muted-foreground">AIM:</span><span class="text-primary">luisnavidad99</span></div>
+                </div>
+              </section>
+
+              <section class="win-bevel mb-3 bg-card">
+                <div class="flex justify-between bg-secondary px-2 py-1 font-bold text-secondary-foreground">
+                  <span>My Wishlist (6 regalos)</span><span class="font-normal">[ edit ]</span>
+                </div>
+                <div class="p-2" id="wishlist">
+                  <p class="mb-2 text-muted-foreground">Haz clic en un perfil para regalármelo:</p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </main>
+
+        <aside>
+          <div class="mb-1 text-center text-muted-foreground">- publicidad -</div>
+          <div class="ad-blink-border mb-3 border-2 border-dashed bg-highlight p-2 text-center">
+            <div class="font-bold text-accent">¡Santa Online 98!</div>
+            <p class="my-1">Envía tu carta a Santa por e-mail. ¡Respuesta en 3 a 5 días hábiles!</p>
+            <span class="retro-btn inline-block cursor-pointer underline">¡Haz clic aquí!</span>
+          </div>
+          <div class="ad-blink-border mb-3 border-2 border-dashed bg-highlight p-2 text-center">
+            <div class="font-bold text-accent">Rompope de la Abuela</div>
+            <p class="my-1">El sabor de diciembre desde 1952. Ahora con 10% más canela.</p>
+            <span class="retro-btn inline-block cursor-pointer underline">Más info</span>
+          </div>
+          <div class="ad-blink-border mb-3 border-2 border-dashed bg-highlight p-2 text-center">
+            <div class="font-bold text-accent">Esferas Glitter 2000</div>
+            <p class="my-1">Paquete de 24 esferas que brillan en la oscuridad. ¡Edición Y2K!</p>
+            <span class="retro-btn inline-block cursor-pointer underline">Comprar</span>
+          </div>
+          <div class="win-bevel mt-2 bg-muted p-2 text-center text-[10px]">
+            <div class="blink font-bold text-accent">FREE MIDI DOWNLOAD</div>
+            <div class="mt-1">jingle_bells_8bit.mid</div>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="border-t border-border p-2 text-center text-muted-foreground">
+        about · contact · jobs · privacy · webring → next → random
+        <br />
+        a Mark Zuckerberg production 🎄 thefaceboock © 1999 — best experienced at 56k
+      </footer>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>

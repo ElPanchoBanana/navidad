@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSN Messenger - Navidad 2000</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Escritorio Windows 2000 -->
+  <div class="desktop">
+    <div class="desktop-icons">
+      <div class="desk-icon" id="icon-messenger">
+        <div class="desk-icon-img">💬</div>
+        <span>MSN<br>Messenger</span>
+      </div>
+      <div class="desk-icon">
+        <div class="desk-icon-img">🌐</div>
+        <span>Internet<br>Explorer</span>
+      </div>
+      <div class="desk-icon">
+        <div class="desk-icon-img">📧</div>
+        <span>Outlook<br>Express</span>
+      </div>
+      <div class="desk-icon">
+        <div class="desk-icon-img">🗑️</div>
+        <span>Papelera<br>de reciclaje</span>
+      </div>
+    </div>
+
+    <!-- Ventana principal MSN -->
+    <div class="win" id="msn-window">
+      <div class="titlebar" id="msn-titlebar">
+        <div class="titlebar-left">
+          <span class="app-icon">💬</span>
+          <span class="title-text">MSN Messenger Service - Navidad 2000</span>
+        </div>
+        <div class="titlebar-btns">
+          <button class="tb-btn" title="Minimizar">_</button>
+          <button class="tb-btn" title="Maximizar">□</button>
+          <button class="tb-btn tb-close" id="btn-close-msn" title="Cerrar">×</button>
+        </div>
+      </div>
+
+      <div class="menubar">
+        <span class="menu-item">Archivo</span>
+        <span class="menu-item">Ver</span>
+        <span class="menu-item">Herramientas</span>
+        <span class="menu-item">Ayuda</span>
+      </div>
+
+      <div class="toolbar">
+        <button class="tool-btn" id="btn-add-contact">➕ Agregar</button>
+        <button class="tool-btn" id="btn-send-msg">✉️ Enviar</button>
+        <button class="tool-btn" id="btn-wishlist">🎁 Deseos</button>
+        <button class="tool-btn" id="btn-emoticons">😊 Emoticones</button>
+      </div>
+
+      <div class="msn-body">
+        <!-- Perfil -->
+        <div class="my-status">
+          <div class="avatar me">🧑</div>
+          <div class="my-info">
+            <div class="display-name">Ernesto <span class="status-tag online">(En línea)</span></div>
+            <div class="personal-msg">🎄 ¡Feliz Navidad! Escuchando villancicos…</div>
+          </div>
+        </div>
+
+        <!-- Lista de contactos -->
+        <div class="contact-list">
+          <div class="group open" data-group="online">
+            <div class="group-header">▼ En línea (8)</div>
+            <div class="group-items">
+              <div class="contact" data-name="Yaser" data-status="online" data-avatar="👨">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👨</span>
+                <span class="c-name">Yaser</span>
+                <span class="c-msg">— Armando el árbol</span>
+              </div>
+              <div class="contact" data-name="Yetzrai" data-status="online" data-avatar="🧑">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">🧑</span>
+                <span class="c-name">Yetzrai</span>
+                <span class="c-msg">— Jugando en la PS2</span>
+              </div>
+              <div class="contact" data-name="Adrian" data-status="online" data-avatar="🧔">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">🧔</span>
+                <span class="c-name">Adrian</span>
+                <span class="c-msg">— ¿Ya comieron?</span>
+              </div>
+              <div class="contact" data-name="Juarez" data-status="online" data-avatar="👨‍🦱">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👨‍🦱</span>
+                <span class="c-name">Juarez</span>
+                <span class="c-msg">— En la posada</span>
+              </div>
+              <div class="contact" data-name="Luis" data-status="online" data-avatar="👦">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👦</span>
+                <span class="c-name">Luis</span>
+                <span class="c-msg">— Viendo la tele</span>
+              </div>
+              <div class="contact" data-name="Gabriel" data-status="online" data-avatar="👨‍🦰">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👨‍🦰</span>
+                <span class="c-name">Gabriel</span>
+                <span class="c-msg">— Terminando tarea</span>
+              </div>
+              <div class="contact" data-name="Ana" data-status="online" data-avatar="👩">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👩</span>
+                <span class="c-name">Ana</span>
+                <span class="c-msg">— ❄️ Hace frío hoy</span>
+              </div>
+              <div class="contact" data-name="karen" data-status="online" data-avatar="👧">
+                <span class="status-dot online"></span>
+                <span class="c-avatar">👧</span>
+                <span class="c-name">karen</span>
+                <span class="c-msg">— Empacando regalos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="group open" data-group="offline">
+            <div class="group-header">▼ Sin conexión (2)</div>
+            <div class="group-items">
+              <div class="contact offline" data-name="Miguel" data-status="offline" data-avatar="🧑">
+                <span class="status-dot offline"></span>
+                <span class="c-avatar">🧑</span>
+                <span class="c-name">Miguel</span>
+              </div>
+              <div class="contact offline" data-name="Roberto" data-status="offline" data-avatar="👨">
+                <span class="status-dot offline"></span>
+                <span class="c-avatar">👨</span>
+                <span class="c-name">Roberto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statusbar">
+        <span>Conectado a MSN Messenger Service</span>
+        <span class="sb-right">10 contactos · Modem 56k</span>
+      </div>
+    </div>
+
+    <!-- Ventana de chat -->
+    <div class="win chat-win hidden" id="chat-window">
+      <div class="titlebar" id="chat-titlebar">
+        <div class="titlebar-left">
+          <span class="app-icon">💬</span>
+          <span class="title-text" id="chat-title">Conversación con Yaser</span>
+        </div>
+        <div class="titlebar-btns">
+          <button class="tb-btn">_</button>
+          <button class="tb-btn">□</button>
+          <button class="tb-btn tb-close" id="btn-close-chat">×</button>
+        </div>
+      </div>
+
+      <div class="menubar">
+        <span class="menu-item">Archivo</span>
+        <span class="menu-item">Editar</span>
+        <span class="menu-item">Acciones</span>
+        <span class="menu-item">Ayuda</span>
+      </div>
+
+      <div class="chat-body">
+        <div class="chat-messages" id="chat-messages">
+          <!-- mensajes dinámicos -->
+        </div>
+
+        <div class="chat-sidebar">
+          <div class="chat-avatar-big" id="chat-avatar">👨</div>
+          <div class="chat-peer-name" id="chat-peer-name">Yaser</div>
+          <div class="chat-peer-status" id="chat-peer-status">En línea</div>
+          <hr class="win-hr" />
+          <div class="chat-tips">
+            <strong>Consejo:</strong><br />
+            Haz doble clic en un contacto para chatear. Prueba el Zumbido 📳 y el Terremoto 🌋
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-compose">
+        <div class="compose-toolbar">
+          <button class="emo-btn" data-emo=":)">:)</button>
+          <button class="emo-btn" data-emo=":D">:D</button>
+          <button class="emo-btn" data-emo=";)">;)</button>
+          <button class="emo-btn" data-emo=":P">:P</button>
+          <button class="emo-btn" data-emo=":(" >:(</button>
+          <button class="emo-btn" data-emo=":O">:O</button>
+          <button class="emo-btn" data-emo="^^">^^</button>
+          <button class="emo-btn" data-emo="🎄">🎄</button>
+          <button class="emo-btn" data-emo="🎁">🎁</button>
+          <button class="emo-btn" data-emo="❄️">❄️</button>
+          <span class="toolbar-sep"></span>
+          <button class="action-btn" id="btn-nudge" title="Enviar un zumbido">📳 Zumbido</button>
+          <button class="action-btn action-quake" id="btn-quake" title="Enviar un terremoto">🌋 Terremoto</button>
+        </div>
+        <div class="compose-row">
+          <textarea id="chat-input" rows="2" placeholder="Escribe un mensaje…"></textarea>
+          <button id="btn-send" class="send-btn">Enviar</button>
+        </div>
+      </div>
+
+      <div class="statusbar">
+        <span id="typing-status">&nbsp;</span>
+        <span class="sb-right">MSN Messenger 3.6</span>
+      </div>
+    </div>
+
+    <!-- Ventana lista de deseos -->
+    <div class="win wishlist-win hidden" id="wishlist-window">
+      <div class="titlebar" id="wishlist-titlebar">
+        <div class="titlebar-left">
+          <span class="app-icon">🎁</span>
+          <span class="title-text">Mi Lista de Deseos Navideños — ¡Compra ya!</span>
+        </div>
+        <div class="titlebar-btns">
+          <button class="tb-btn">_</button>
+          <button class="tb-btn">□</button>
+          <button class="tb-btn tb-close" id="btn-close-wishlist">×</button>
+        </div>
+      </div>
+
+      <div class="wishlist-banner">
+        <marquee behavior="scroll" scrollamount="4">
+          ★ LISTA DE DESEOS 2000 ★ Agrega regalos ★ Comparte con tus contactos de MSN ★ ¡Santa está mirando!
+        </marquee>
+      </div>
+
+      <div class="wishlist-body">
+        <div class="wish-grid" id="wish-table">
+          <div class="wish-card">
+            <img class="wish-img" src="regalos/pijama%20ernesto.jpeg" alt="Pijama de Ernesto" />
+            <div class="wish-info">
+              <div class="wish-name">Pijama (cuadros rojos)</div>
+              <div class="wish-store">MSN Shopping</div>
+              <div class="wish-price">$29.99</div>
+              <button class="buy-btn" data-item="Pijama de Ernesto">Comprar</button>
+            </div>
+          </div>
+          <div class="wish-card">
+            <img class="wish-img" src="regalos/rodilleras%20ernesto.jpeg" alt="Rodilleras de Ernesto" />
+            <div class="wish-info">
+              <div class="wish-name">Rodilleras SkateWiz</div>
+              <div class="wish-store">Deportes / Patinaje</div>
+              <div class="wish-price">$24.99</div>
+              <button class="buy-btn" data-item="Rodilleras SkateWiz">Comprar</button>
+            </div>
+          </div>
+          <div class="wish-card">
+            <img class="wish-img" src="regalos/juegos%20ernesto.jpg" alt="Juegos de Ernesto" />
+            <div class="wish-info">
+              <div class="wish-name">Juegos — Little Nightmares</div>
+              <div class="wish-store">GameStop / PS</div>
+              <div class="wish-price">$59.99</div>
+              <button class="buy-btn" data-item="Little Nightmares">Comprar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="statusbar">
+        <span>3 deseos de Ernesto · Presupuesto: $114.97</span>
+        <span class="sb-right">powered by MSN Shopping</span>
+      </div>
+    </div>
+
+    <!-- POPUP SPAM NAVIDEÑO -->
+    <div class="spam-popup hidden" id="spam-popup">
+      <div class="spam-titlebar">
+        <span>★ MENSAJE URGENTE DE MSN ★</span>
+        <button class="spam-x" id="spam-close">×</button>
+      </div>
+      <div class="spam-body">
+        <div class="spam-blink">¡¡¡FELIZ NAVIDAD!!!</div>
+        <div class="spam-main">
+          <div class="spam-tree">🎄</div>
+          <p class="spam-msg">
+            <span class="spam-rainbow">¡Feliz Navidad</span><br />
+            <span class="spam-rainbow delay">y Próspero Año Nuevo!</span>
+          </p>
+          <div class="spam-tree">🎄</div>
+        </div>
+        <marquee class="spam-marquee" scrollamount="6">
+          ★ CONGRATULACIONES ★ HAS SIDO SELECCIONADO ★ GANA UN PLAYSTATION 2 ★ HAZ CLIC AHORA ★ NO ES VIRUS PROMETIDO ★
+        </marquee>
+        <div class="spam-btns">
+          <button class="spam-yes" id="spam-accept">¡SÍ! QUIERO MI REGALO</button>
+          <button class="spam-no" id="spam-deny">No gracias (eres tonto)</button>
+        </div>
+        <p class="spam-fine">Este mensaje no es spam. Certificado por Santa.exe · © 2000 Microsoft Corp. (mentira)</p>
+      </div>
+    </div>
+
+    <!-- Segundo popup spam (clásico en cadena) -->
+    <div class="spam-popup spam2 hidden" id="spam-popup-2">
+      <div class="spam-titlebar spam-titlebar-red">
+        <span>⚠ ADVERTENCIA DEL SISTEMA</span>
+        <button class="spam-x" id="spam-close-2">×</button>
+      </div>
+      <div class="spam-body">
+        <p class="spam2-text">
+          Tu PC puede contener hasta <blink>327 virus navideños</blink>.<br />
+          Descarga <u>SantaAntivirus2000.bat</u> YA.
+        </p>
+        <button class="spam-yes" id="spam-accept-2">DESCARGAR GRATIS</button>
+      </div>
+    </div>
+
+    <!-- Diálogo de compra -->
+    <div class="win alert-win hidden" id="buy-alert">
+      <div class="titlebar">
+        <div class="titlebar-left">
+          <span class="app-icon">💳</span>
+          <span class="title-text">MSN Shopping</span>
+        </div>
+        <div class="titlebar-btns">
+          <button class="tb-btn tb-close" id="btn-close-alert">×</button>
+        </div>
+      </div>
+      <div class="alert-body">
+        <div class="alert-icon">🛒</div>
+        <div class="alert-text" id="buy-alert-text">
+          ¿Confirmas la compra?
+        </div>
+      </div>
+      <div class="alert-btns">
+        <button class="win-btn" id="btn-confirm-buy">Aceptar</button>
+        <button class="win-btn" id="btn-cancel-buy">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Barra de tareas -->
+    <div class="taskbar">
+      <button class="start-btn">
+        <span class="start-logo">⊞</span> Inicio
+      </button>
+      <div class="task-btns">
+        <button class="task-btn active" id="task-msn">💬 MSN Messenger</button>
+        <button class="task-btn hidden" id="task-chat">💬 Chat</button>
+        <button class="task-btn hidden" id="task-wish">🎁 Deseos</button>
+      </div>
+      <div class="tray">
+        <span class="tray-ico" title="Volumen">🔊</span>
+        <span class="tray-ico" title="Modem">📡</span>
+        <span class="tray-ico" title="MSN">💬</span>
+        <span class="clock" id="clock">4:05 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nieve -->
+  <div class="snow" id="snow" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

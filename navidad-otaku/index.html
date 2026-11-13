@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>★☆ PADORU BLOG ☆★ ~*Feliz Navidad Otaku 2000*~</title>
+  <link rel="stylesheet" href="assets/fonts/local-fonts.css" />
+  <style>
+    :root {
+      --bg-hot: #ff69b4;
+      --bg-red: #c41e3a;
+      --bg-green: #00ff66;
+      --bg-gold: #ffd700;
+      --bg-blue: #00bfff;
+      --ink: #1a0033;
+      --link: #0000ee;
+      --visited: #551a8b;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='24' font-size='24'%3E🎄%3C/text%3E%3C/svg%3E") 8 8, auto;
+    }
+
+    body {
+      font-family: "Comic Neue", "Comic Sans MS", "Chalkboard SE", cursive;
+      color: var(--ink);
+      background-color: #ffc0cb;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 60%, rgba(255,255,255,.85) 0 1.5px, transparent 2.5px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.7) 0 2px, transparent 3px),
+        repeating-linear-gradient(45deg, #ff9ec8 0 12px, #ffb6d9 12px 24px),
+        linear-gradient(180deg, #ff4d6d, #ff85a2 40%, #b8f2e6);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    /* —— ENTER GATE —— */
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at center, #fff7 0 18%, transparent 55%),
+        repeating-linear-gradient(90deg, #c41e3a 0 20px, #0a7a3e 20px 40px);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    #gate.gone { display: none; }
+
+    .gate-box {
+      background: #fff url("assets/padoru.gif") right 8px bottom 8px / 90px no-repeat;
+      border: 6px ridge #ffd700;
+      outline: 4px solid #ff1493;
+      padding: 1.5rem 1.75rem 2rem;
+      max-width: 520px;
+      box-shadow: 8px 8px 0 #000, 0 0 40px #ff0;
+      animation: gate-pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes gate-pulse {
+      0%, 100% { transform: scale(1) rotate(-1deg); }
+      50% { transform: scale(1.04) rotate(1deg); }
+    }
+
+    .gate-box h1 {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.7rem, 3vw, 1rem);
+      color: #c41e3a;
+      text-shadow: 2px 2px 0 #ffd700, -1px -1px 0 #0ff;
+      line-height: 1.6;
+      margin: 0 0 1rem;
+    }
+
+    .gate-box p {
+      font-size: 1.1rem;
+      margin: 0 0 1.25rem;
+      color: #4b0082;
+    }
+
+    #enter-btn {
+      font-family: "Silkscreen", monospace;
+      font-size: 1.1rem;
+      background: linear-gradient(#ffff66, #ff9900);
+      border: 4px outset #fff;
+      color: #900;
+      padding: 0.85rem 1.4rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      animation: blink-hard 0.6s steps(2) infinite;
+    }
+
+    #enter-btn:active { border-style: inset; }
+
+    /* —— LAYOUT —— */
+    .wrap {
+      --content-w: 920px;
+      max-width: var(--content-w);
+      margin: 0 auto;
+      padding: 0.75rem;
+      position: relative;
+      z-index: 5;
+      isolation: isolate;
+    }
+
+    .wrap > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* —— COLLAGE densísimo: solo lados, sin huecos de fondo —— */
+    .mona-side {
+      --gutter-content: 920px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      width: max(0px, calc((100vw - var(--gutter-content)) / 2));
+    }
+
+    .mona-side.left  { left: 0; }
+    .mona-side.right { right: 0; }
+
+    .mona-side img {
+      position: absolute;
+      height: auto;
+      max-width: none;
+      object-fit: contain;
+      filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.45));
+      user-select: none;
+    }
+
+    .mona-side.left .m1 { right: -27.8%; top: -9.2%; width: 75.1%; transform: rotate(9.7deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m2 { right: 0.2%; top: -8.0%; width: 93.2%; transform: rotate(-8.6deg); z-index: 2; }
+    .mona-side.left .m3 { right: 31.9%; top: -6.8%; width: 91.8%; transform: rotate(-29.6deg); z-index: 3; }
+    .mona-side.left .m4 { right: -26.1%; top: -3.6%; width: 71.3%; transform: rotate(-26.2deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m5 { right: 5.8%; top: -2.4%; width: 106.9%; transform: rotate(-24.1deg); z-index: 5; }
+    .mona-side.left .m6 { right: 34.6%; top: -1.2%; width: 97.5%; transform: rotate(28.7deg); z-index: 6; }
+    .mona-side.left .m7 { right: -23.8%; top: 2.0%; width: 86.6%; transform: rotate(30.5deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m8 { right: -0.3%; top: 3.2%; width: 108.3%; transform: rotate(-13.5deg); z-index: 8; }
+    .mona-side.left .m9 { right: 33.3%; top: 4.4%; width: 73.5%; transform: rotate(-12.3deg); z-index: 9; }
+    .mona-side.left .m10 { right: -19.9%; top: 7.6%; width: 76.5%; transform: rotate(5.2deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m11 { right: 9.2%; top: 8.8%; width: 85.5%; transform: rotate(3.1deg); z-index: 2; }
+    .mona-side.left .m12 { right: 32.0%; top: 10.0%; width: 70.8%; transform: rotate(-18.8deg); z-index: 3; }
+    .mona-side.left .m13 { right: -22.1%; top: 13.2%; width: 88.1%; transform: rotate(-11.9deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m14 { right: 8.4%; top: 14.4%; width: 89.3%; transform: rotate(-12.8deg); z-index: 5; }
+    .mona-side.left .m15 { right: 43.7%; top: 15.6%; width: 100.9%; transform: rotate(-16.4deg); z-index: 6; }
+    .mona-side.left .m16 { right: -23.8%; top: 18.8%; width: 92.7%; transform: rotate(24.0deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m17 { right: 10.7%; top: 20.0%; width: 81.5%; transform: rotate(30.7deg); z-index: 8; }
+    .mona-side.left .m18 { right: 32.9%; top: 21.2%; width: 87.7%; transform: rotate(16.5deg); z-index: 9; }
+    .mona-side.left .m19 { right: -30.6%; top: 24.4%; width: 91.0%; transform: rotate(-29.5deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m20 { right: 9.7%; top: 25.6%; width: 103.9%; transform: rotate(4.7deg); z-index: 2; }
+    .mona-side.left .m21 { right: 45.0%; top: 26.8%; width: 82.7%; transform: rotate(12.5deg); z-index: 3; }
+    .mona-side.left .m22 { right: -23.5%; top: 30.0%; width: 95.3%; transform: rotate(-2.8deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m23 { right: 12.4%; top: 31.2%; width: 112.4%; transform: rotate(-1.7deg); z-index: 5; }
+    .mona-side.left .m24 { right: 41.6%; top: 32.4%; width: 70.9%; transform: rotate(12.9deg); z-index: 6; }
+    .mona-side.left .m25 { right: -22.6%; top: 35.6%; width: 114.7%; transform: rotate(20.6deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m26 { right: 3.6%; top: 36.8%; width: 86.1%; transform: rotate(10.8deg); z-index: 8; }
+    .mona-side.left .m27 { right: 31.4%; top: 38.0%; width: 89.7%; transform: rotate(-21.2deg); z-index: 9; }
+    .mona-side.left .m28 { right: -31.1%; top: 41.2%; width: 70.8%; transform: rotate(17.2deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m29 { right: 1.1%; top: 42.4%; width: 79.6%; transform: rotate(-7.0deg); z-index: 2; }
+    .mona-side.left .m30 { right: 44.9%; top: 43.6%; width: 71.8%; transform: rotate(-3.3deg); z-index: 3; }
+    .mona-side.left .m31 { right: -24.2%; top: 46.8%; width: 109.5%; transform: rotate(20.4deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m32 { right: 12.8%; top: 48.0%; width: 81.1%; transform: rotate(-5.4deg); z-index: 5; }
+    .mona-side.left .m33 { right: 36.7%; top: 49.2%; width: 109.6%; transform: rotate(29.3deg); z-index: 6; }
+    .mona-side.left .m34 { right: -30.6%; top: 52.4%; width: 76.3%; transform: rotate(-17.2deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m35 { right: 2.7%; top: 53.6%; width: 90.8%; transform: rotate(5.7deg); z-index: 8; }
+    .mona-side.left .m36 { right: 35.2%; top: 54.8%; width: 68.2%; transform: rotate(-5.2deg); z-index: 9; }
+    .mona-side.left .m37 { right: -27.1%; top: 58.0%; width: 94.6%; transform: rotate(29.0deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m38 { right: 10.0%; top: 59.2%; width: 92.2%; transform: rotate(7.5deg); z-index: 2; }
+    .mona-side.left .m39 { right: 41.8%; top: 60.4%; width: 70.5%; transform: rotate(25.6deg); z-index: 3; }
+    .mona-side.left .m40 { right: -20.5%; top: 63.6%; width: 109.1%; transform: rotate(19.1deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m41 { right: 5.3%; top: 64.8%; width: 86.8%; transform: rotate(-25.4deg); z-index: 5; }
+    .mona-side.left .m42 { right: 41.1%; top: 66.0%; width: 70.9%; transform: rotate(-27.7deg); z-index: 6; }
+    .mona-side.left .m43 { right: -29.7%; top: 69.2%; width: 75.6%; transform: rotate(-10.2deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m44 { right: -0.2%; top: 70.4%; width: 68.0%; transform: rotate(-22.3deg); z-index: 8; }
+    .mona-side.left .m45 { right: 32.6%; top: 71.6%; width: 85.1%; transform: rotate(-30.4deg); z-index: 9; }
+    .mona-side.left .m46 { right: -19.0%; top: 74.8%; width: 96.9%; transform: rotate(-22.5deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m47 { right: 3.0%; top: 76.0%; width: 84.3%; transform: rotate(-8.7deg); z-index: 2; }
+    .mona-side.left .m48 { right: 33.0%; top: 77.2%; width: 107.9%; transform: rotate(31.6deg); z-index: 3; }
+    .mona-side.left .m49 { right: -25.5%; top: 80.4%; width: 90.7%; transform: rotate(-26.5deg) scaleX(-1); z-index: 4; }
+    .mona-side.left .m50 { right: 0.6%; top: 81.6%; width: 84.1%; transform: rotate(-15.1deg); z-index: 5; }
+    .mona-side.left .m51 { right: 44.3%; top: 82.8%; width: 75.6%; transform: rotate(-30.5deg); z-index: 6; }
+    .mona-side.left .m52 { right: -17.8%; top: 86.0%; width: 92.8%; transform: rotate(-22.6deg) scaleX(-1); z-index: 7; }
+    .mona-side.left .m53 { right: 7.7%; top: 87.2%; width: 69.3%; transform: rotate(1.8deg); z-index: 8; }
+    .mona-side.left .m54 { right: 46.7%; top: 88.4%; width: 108.6%; transform: rotate(12.6deg); z-index: 9; }
+    .mona-side.left .m55 { right: -28.8%; top: 91.6%; width: 85.2%; transform: rotate(-21.3deg) scaleX(-1); z-index: 1; }
+    .mona-side.left .m56 { right: 11.4%; top: 92.8%; width: 93.0%; transform: rotate(17.9deg); z-index: 2; }
+
+    .mona-side.right .m1 { left: -27.7%; top: -9.2%; width: 78.5%; transform: rotate(19.9deg); z-index: 1; }
+    .mona-side.right .m2 { left: 14.8%; top: -8.0%; width: 108.1%; transform: rotate(19.6deg); z-index: 2; }
+    .mona-side.right .m3 { left: 44.1%; top: -6.8%; width: 102.8%; transform: rotate(-17.5deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m4 { left: -24.7%; top: -3.6%; width: 84.7%; transform: rotate(-30.1deg); z-index: 4; }
+    .mona-side.right .m5 { left: -0.6%; top: -2.4%; width: 81.1%; transform: rotate(-15.4deg); z-index: 5; }
+    .mona-side.right .m6 { left: 42.1%; top: -1.2%; width: 113.0%; transform: rotate(-3.4deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m7 { left: -18.0%; top: 2.0%; width: 114.4%; transform: rotate(29.1deg); z-index: 7; }
+    .mona-side.right .m8 { left: 4.8%; top: 3.2%; width: 78.4%; transform: rotate(-17.5deg); z-index: 8; }
+    .mona-side.right .m9 { left: 34.1%; top: 4.4%; width: 77.6%; transform: rotate(7.9deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m10 { left: -18.6%; top: 7.6%; width: 107.5%; transform: rotate(-1.3deg); z-index: 1; }
+    .mona-side.right .m11 { left: 9.4%; top: 8.8%; width: 105.6%; transform: rotate(-26.6deg); z-index: 2; }
+    .mona-side.right .m12 { left: 41.6%; top: 10.0%; width: 110.8%; transform: rotate(18.1deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m13 { left: -21.0%; top: 13.2%; width: 90.5%; transform: rotate(-20.6deg); z-index: 4; }
+    .mona-side.right .m14 { left: 11.6%; top: 14.4%; width: 83.6%; transform: rotate(19.3deg); z-index: 5; }
+    .mona-side.right .m15 { left: 46.5%; top: 15.6%; width: 86.6%; transform: rotate(-6.3deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m16 { left: -17.9%; top: 18.8%; width: 102.1%; transform: rotate(-21.1deg); z-index: 7; }
+    .mona-side.right .m17 { left: 1.0%; top: 20.0%; width: 75.1%; transform: rotate(25.9deg); z-index: 8; }
+    .mona-side.right .m18 { left: 43.9%; top: 21.2%; width: 74.9%; transform: rotate(20.9deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m19 { left: -17.3%; top: 24.4%; width: 98.9%; transform: rotate(-9.6deg); z-index: 1; }
+    .mona-side.right .m20 { left: 7.8%; top: 25.6%; width: 74.2%; transform: rotate(-31.1deg); z-index: 2; }
+    .mona-side.right .m21 { left: 46.5%; top: 26.8%; width: 98.5%; transform: rotate(1.7deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m22 { left: -18.1%; top: 30.0%; width: 88.4%; transform: rotate(23.8deg); z-index: 4; }
+    .mona-side.right .m23 { left: 12.2%; top: 31.2%; width: 77.9%; transform: rotate(-15.9deg); z-index: 5; }
+    .mona-side.right .m24 { left: 35.7%; top: 32.4%; width: 79.3%; transform: rotate(5.5deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m25 { left: -28.9%; top: 35.6%; width: 87.7%; transform: rotate(-23.6deg); z-index: 7; }
+    .mona-side.right .m26 { left: 13.6%; top: 36.8%; width: 84.6%; transform: rotate(-2.7deg); z-index: 8; }
+    .mona-side.right .m27 { left: 40.3%; top: 38.0%; width: 110.5%; transform: rotate(-5.1deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m28 { left: -18.3%; top: 41.2%; width: 91.6%; transform: rotate(2.0deg); z-index: 1; }
+    .mona-side.right .m29 { left: 7.4%; top: 42.4%; width: 68.9%; transform: rotate(-3.8deg); z-index: 2; }
+    .mona-side.right .m30 { left: 33.9%; top: 43.6%; width: 68.2%; transform: rotate(19.1deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m31 { left: -30.2%; top: 46.8%; width: 90.3%; transform: rotate(14.4deg); z-index: 4; }
+    .mona-side.right .m32 { left: 7.9%; top: 48.0%; width: 83.3%; transform: rotate(1.2deg); z-index: 5; }
+    .mona-side.right .m33 { left: 39.9%; top: 49.2%; width: 104.9%; transform: rotate(-25.2deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m34 { left: -24.0%; top: 52.4%; width: 79.7%; transform: rotate(-14.3deg); z-index: 7; }
+    .mona-side.right .m35 { left: 11.4%; top: 53.6%; width: 91.9%; transform: rotate(4.0deg); z-index: 8; }
+    .mona-side.right .m36 { left: 43.2%; top: 54.8%; width: 110.9%; transform: rotate(-3.6deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m37 { left: -23.2%; top: 58.0%; width: 91.8%; transform: rotate(0.8deg); z-index: 1; }
+    .mona-side.right .m38 { left: 10.1%; top: 59.2%; width: 89.3%; transform: rotate(2.1deg); z-index: 2; }
+    .mona-side.right .m39 { left: 38.6%; top: 60.4%; width: 112.3%; transform: rotate(12.7deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m40 { left: -19.0%; top: 63.6%; width: 112.3%; transform: rotate(-15.4deg); z-index: 4; }
+    .mona-side.right .m41 { left: 8.0%; top: 64.8%; width: 112.3%; transform: rotate(21.8deg); z-index: 5; }
+    .mona-side.right .m42 { left: 33.2%; top: 66.0%; width: 73.7%; transform: rotate(-3.7deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m43 { left: -31.8%; top: 69.2%; width: 79.3%; transform: rotate(-27.3deg); z-index: 7; }
+    .mona-side.right .m44 { left: 9.7%; top: 70.4%; width: 104.8%; transform: rotate(25.4deg); z-index: 8; }
+    .mona-side.right .m45 { left: 33.5%; top: 71.6%; width: 101.7%; transform: rotate(10.3deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m46 { left: -30.7%; top: 74.8%; width: 109.5%; transform: rotate(29.9deg); z-index: 1; }
+    .mona-side.right .m47 { left: 2.5%; top: 76.0%; width: 112.8%; transform: rotate(-6.5deg); z-index: 2; }
+    .mona-side.right .m48 { left: 38.8%; top: 77.2%; width: 114.5%; transform: rotate(21.3deg) scaleX(-1); z-index: 3; }
+    .mona-side.right .m49 { left: -30.4%; top: 80.4%; width: 88.3%; transform: rotate(1.0deg); z-index: 4; }
+    .mona-side.right .m50 { left: 4.4%; top: 81.6%; width: 77.2%; transform: rotate(-11.6deg); z-index: 5; }
+    .mona-side.right .m51 { left: 42.6%; top: 82.8%; width: 68.9%; transform: rotate(3.5deg) scaleX(-1); z-index: 6; }
+    .mona-side.right .m52 { left: -26.0%; top: 86.0%; width: 68.8%; transform: rotate(-10.8deg); z-index: 7; }
+    .mona-side.right .m53 { left: 9.0%; top: 87.2%; width: 92.1%; transform: rotate(-27.9deg); z-index: 8; }
+    .mona-side.right .m54 { left: 46.8%; top: 88.4%; width: 105.1%; transform: rotate(30.2deg) scaleX(-1); z-index: 9; }
+    .mona-side.right .m55 { left: -31.3%; top: 91.6%; width: 80.5%; transform: rotate(-29.5deg); z-index: 1; }
+    .mona-side.right .m56 { left: 11.5%; top: 92.8%; width: 80.7%; transform: rotate(-23.7deg); z-index: 2; }
+
+    @media (max-width: 1100px) {
+      .wrap { --content-w: 760px; }
+      .mona-side { --gutter-content: 760px; }
+    }
+
+    @media (max-width: 900px) {
+      .mona-side { display: none; }
+    }
+
+    .top-banner {
+      background: #000;
+      color: #0f0;
+      font-family: "Press Start 2P", monospace;
+      font-size: 0.55rem;
+      padding: 0.45rem;
+      text-align: center;
+      letter-spacing: 1px;
+      border-bottom: 3px solid #ff0;
+    }
+
+    header.site-header {
+      text-align: center;
+      padding: 1rem 0.5rem 0.5rem;
+      position: relative;
+      background: rgba(255, 240, 250, 0.92);
+      border: 4px ridge #ff69b4;
+      outline: 2px dashed #ffd700;
+      outline-offset: 3px;
+    }
+
+    .brand {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.85rem, 3.5vw, 1.45rem);
+      line-height: 1.55;
+      margin: 0;
+      color: #fff;
+      text-shadow:
+        3px 3px 0 #c41e3a,
+        -2px -2px 0 #00ff66,
+        0 0 12px #ff0;
+      animation: rainbow-text 2s linear infinite;
+    }
+
+    @keyframes rainbow-text {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    .subtitle {
+      font-size: 1.15rem;
+      color: #4b0082;
+      background: #ffff99;
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border: 2px dashed #ff1493;
+      margin-top: 0.75rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1rem;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      background: #e0ffff;
+      border: 3px double #0000aa;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: var(--link);
+      text-decoration: underline wavy #ff1493;
+    }
+
+    .nav-links a:visited { color: var(--visited); }
+
+    /* —— SPAM HERO —— */
+    .spam-wall {
+      position: relative;
+      margin: 1rem 0;
+      padding: 1.25rem 0.5rem;
+      background:
+        repeating-linear-gradient(
+          -12deg,
+          #ff0000 0 18px,
+          #ffff00 18px 36px,
+          #00ff00 36px 54px,
+          #00ffff 54px 72px,
+          #ff00ff 72px 90px
+        );
+      border: 8px groove #ffd700;
+      overflow: hidden;
+      min-height: 42vh;
+      display: grid;
+      place-items: center;
+    }
+
+    .spam-wall::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0 2px,
+        rgba(0,0,0,.08) 2px 4px
+      );
+      pointer-events: none;
+      animation: scan 0.4s linear infinite;
+    }
+
+    @keyframes scan {
+      to { transform: translateY(4px); }
+    }
+
+    .spam-mega {
+      position: relative;
+      z-index: 1;
+      font-family: Impact, Haettenschweiler, "Arial Black", sans-serif;
+      font-size: clamp(2.4rem, 11vw, 5.5rem);
+      line-height: 0.95;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      -webkit-text-stroke: 3px #000;
+      text-shadow:
+        6px 6px 0 #ff0,
+        -4px -4px 0 #f0f,
+        0 0 20px #fff;
+      animation: spam-shake 0.35s infinite, spam-scale 1.8s ease-in-out infinite;
+      margin: 0;
+      padding: 0.5rem;
+      max-width: 100%;
+      word-break: break-word;
+    }
+
+    .spam-mega span {
+      display: block;
+      font-size: 0.72em;
+      color: #0f0;
+      -webkit-text-stroke: 2px #000;
+    }
+
+    @keyframes spam-shake {
+      0%, 100% { transform: translate(0, 0) rotate(-2deg); }
+      25% { transform: translate(4px, -3px) rotate(2deg); }
+      50% { transform: translate(-3px, 2px) rotate(-1deg); }
+      75% { transform: translate(2px, 3px) rotate(1.5deg); }
+    }
+
+    @keyframes spam-scale {
+      0%, 100% { scale: 1; }
+      50% { scale: 1.08; }
+    }
+
+    .spam-copies {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.35;
+      pointer-events: none;
+      font-family: Impact, sans-serif;
+      font-size: 1.4rem;
+      color: #000;
+      line-height: 1.3;
+      word-spacing: 0.4rem;
+      overflow: hidden;
+      animation: scroll-spam 12s linear infinite;
+    }
+
+    @keyframes scroll-spam {
+      from { transform: translateY(0); }
+      to { transform: translateY(-50%); }
+    }
+
+    marquee {
+      background: #000;
+      color: #ff0;
+      font-family: "Silkscreen", monospace;
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+      border-top: 2px solid #f0f;
+      border-bottom: 2px solid #0ff;
+    }
+
+    /* —— PADORU SECTION —— */
+    .padoru-stage {
+      margin: 1.25rem 0;
+      padding: 1rem;
+      background: linear-gradient(180deg, #1a0033, #4b0082 50%, #c41e3a);
+      border: 6px ridge silver;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .padoru-stage h2 {
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.65rem, 2.5vw, 0.95rem);
+      color: #ffd700;
+      text-shadow: 2px 2px #000;
+      margin: 0 0 1rem;
+      animation: blink-hard 1s steps(2) infinite;
+    }
+
+    @keyframes blink-hard {
+      50% { opacity: 0; }
+    }
+
+    .padoru-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .padoru-row img {
+      image-rendering: auto;
+      filter: drop-shadow(0 0 8px #ffd700);
+      animation: bounce-padoru 0.55s ease-in-out infinite alternate;
+    }
+
+    .padoru-row img:nth-child(1) { width: min(280px, 70vw); animation-delay: 0s; }
+    .padoru-row img:nth-child(2) { width: min(160px, 40vw); animation-delay: 0.15s; }
+    .padoru-row img:nth-child(3) { width: min(120px, 30vw); animation-delay: 0.3s; }
+
+    @keyframes bounce-padoru {
+      from { transform: translateY(0) rotate(-4deg); }
+      to { transform: translateY(-18px) rotate(4deg); }
+    }
+
+    .padoru-lyrics {
+      margin-top: 1rem;
+      font-family: "Press Start 2P", monospace;
+      font-size: 0.55rem;
+      line-height: 1.8;
+      color: #fff;
+      text-shadow: 0 0 6px #f0f;
+    }
+
+    /* —— WISHLIST —— */
+    .wishlist {
+      margin: 1.25rem 0;
+      background: #fffff0;
+      border: 5px solid #0a7a3e;
+      outline: 3px dashed #c41e3a;
+      outline-offset: 4px;
+      padding: 1rem 1.1rem 1.25rem;
+    }
+
+    .wishlist h2 {
+      font-family: "Silkscreen", monospace;
+      font-size: 1.35rem;
+      color: #c41e3a;
+      text-align: center;
+      margin: 0 0 0.35rem;
+      text-decoration: underline overline #ffd700;
+    }
+
+    .wishlist .note {
+      text-align: center;
+      color: #333;
+      margin: 0 0 1rem;
+      font-size: 0.95rem;
+    }
+
+    .wish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.85rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wish-card {
+      background: #fff;
+      border: 3px ridge #ff69b4;
+      padding: 0.55rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      box-shadow: 3px 3px 0 #c41e3a;
+    }
+
+    .wish-card a.thumb {
+      display: block;
+      background: #ffeef7;
+      border: 2px inset #ccc;
+      aspect-ratio: 1;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .wish-card a.thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .wish-card h3 {
+      margin: 0;
+      font-size: 0.98rem;
+      color: #c41e3a;
+      line-height: 1.25;
+    }
+
+    .wish-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #333;
+      flex: 1;
+    }
+
+    .wish-card .shop {
+      font-family: "Silkscreen", monospace;
+      font-size: 0.72rem;
+      text-align: center;
+      background: linear-gradient(#ffff66, #ff9900);
+      border: 3px outset #fff;
+      color: #900;
+      text-decoration: none;
+      padding: 0.45rem 0.35rem;
+      animation: blink-hard 1.6s steps(2) infinite;
+    }
+
+    .wish-card .shop:hover {
+      filter: brightness(1.08);
+    }
+
+    .wish-card .store {
+      font-size: 0.72rem;
+      color: #666;
+      text-align: center;
+    }
+
+    .wishlist .priority {
+      display: inline-block;
+      background: #ff0;
+      border: 1px solid #000;
+      font-size: 0.65rem;
+      padding: 0 0.3rem;
+      margin-left: 0.25rem;
+      vertical-align: middle;
+    }
+
+    /* —— BLOG ENTRIES —— */
+    .blog {
+      margin: 1.25rem 0;
+      background: #fff;
+      border: 4px solid #0000aa;
+      padding: 0.75rem;
+    }
+
+    .blog h2 {
+      font-family: "Comic Neue", "Comic Sans MS", cursive;
+      background: linear-gradient(90deg, #ff69b4, #00bfff);
+      color: #fff;
+      margin: 0 0 0.75rem;
+      padding: 0.35rem 0.5rem;
+      text-shadow: 1px 1px #000;
+      border: 2px outset #fff;
+    }
+
+    .entry {
+      border: 2px inset #ccc;
+      background: #f8f8ff;
+      padding: 0.65rem 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .entry h3 {
+      margin: 0 0 0.25rem;
+      color: #0000cc;
+      font-size: 1.1rem;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .entry p { margin: 0.4rem 0; }
+
+    /* —— SIDEBITS —— */
+    .bits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .bits { grid-template-columns: 1fr; }
+    }
+
+    .bit {
+      background: #ffe4e1;
+      border: 4px ridge #ff69b4;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .bit h3 {
+      margin: 0 0 0.5rem;
+      font-family: "Silkscreen", monospace;
+      font-size: 0.95rem;
+      color: #900;
+    }
+
+    .counter {
+      font-family: "Press Start 2P", monospace;
+      font-size: 1.1rem;
+      background: #000;
+      color: #0f0;
+      display: inline-block;
+      padding: 0.4rem 0.6rem;
+      letter-spacing: 0.15em;
+      border: 2px inset #333;
+    }
+
+    .webring {
+      background: #e6e6fa;
+      border: 3px double #4b0082;
+      text-align: center;
+      padding: 0.75rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0.5rem 3rem;
+      font-size: 0.85rem;
+      color: #4b0082;
+    }
+
+    footer .blink {
+      animation: blink-hard 0.8s steps(2) infinite;
+      color: #c41e3a;
+      font-weight: 700;
+    }
+
+    #padoru-audio {
+      position: fixed;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    /* —— MODAL SPAM VIDEO INTRO (30s lock) —— */
+    #video-trap {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      background:
+        repeating-linear-gradient(-18deg, #ff0 0 14px, #f0f 14px 28px, #0ff 28px 42px, #f00 42px 56px);
+      overflow-y: auto;
+    }
+
+    #video-trap.open {
+      display: grid;
+    }
+
+    .video-trap-box {
+      width: min(720px, 100%);
+      background: #fff;
+      border: 8px ridge #ffd700;
+      outline: 5px solid #ff1493;
+      box-shadow: 10px 10px 0 #000, 0 0 0 10px #00ff66;
+      padding: 0.85rem 0.85rem 1.1rem;
+      text-align: center;
+      animation: gate-pulse 1.4s ease-in-out infinite;
+      position: relative;
+      z-index: 100002;
+    }
+
+    .video-trap-box h2 {
+      margin: 0 0 0.4rem;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.55rem, 2.4vw, 0.85rem);
+      line-height: 1.55;
+      color: #c41e3a;
+      text-shadow: 2px 2px 0 #ff0;
+    }
+
+    .video-trap-box .spam-line {
+      margin: 0 0 0.75rem;
+      font-weight: 700;
+      color: #4b0082;
+      font-size: 1rem;
+      animation: blink-hard 0.9s steps(2) infinite;
+    }
+
+    /* LuisGaara fijo a la izquierda de la pantalla (fuera del modal/video) */
+    .luisgaara-side {
+      position: fixed;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%) rotate(-2deg);
+      z-index: 100001;
+      width: min(420px, 36vw);
+      height: min(92vh, 900px);
+      display: none;
+      pointer-events: none;
+      background: #ffe4f1;
+      border: 8px ridge #ff1493;
+      outline: 5px dashed #ffd700;
+      outline-offset: 4px;
+      overflow: hidden;
+      box-shadow: 10px 10px 0 #000, 0 0 32px rgba(255, 20, 147, 0.7);
+    }
+
+    #video-trap.open .luisgaara-side {
+      display: block;
+      animation: gaara-bob 2s ease-in-out infinite;
+    }
+
+    .luisgaara-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .luisgaara-side .gaara-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.82);
+      color: #ff0;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.55rem, 1.4vw, 0.85rem);
+      text-align: center;
+      padding: 0.55rem 0.3rem;
+      line-height: 1.4;
+      animation: blink-hard 1s steps(2) infinite;
+    }
+
+    @keyframes gaara-bob {
+      0%, 100% { transform: translateY(-50%) rotate(-2deg); }
+      50% { transform: translateY(calc(-50% - 10px)) rotate(2deg); }
+    }
+
+    .video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border: 4px inset #666;
+      overflow: hidden;
+    }
+
+    .video-frame video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+      object-fit: contain;
+    }
+
+    /* cam de “alguien te está viendo” — más grande y notoria */
+    .watcher-cam {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 100001;
+      width: min(280px, 42vw);
+      display: none;
+      pointer-events: none;
+      border: 6px solid #ff0;
+      outline: 4px solid #ff1493;
+      box-shadow: 8px 8px 0 #000, 0 0 28px rgba(255, 0, 0, 0.7);
+      background: #000;
+      overflow: hidden;
+      transform: rotate(-2deg);
+    }
+
+    #video-trap.open .watcher-cam {
+      display: block;
+      animation: watcher-wobble 1.8s ease-in-out infinite;
+    }
+
+    .watcher-cam video {
+      width: 100%;
+      height: auto;
+      display: block;
+      aspect-ratio: 9 / 16;
+      max-height: min(52vh, 420px);
+      object-fit: cover;
+      background: #111;
+    }
+
+    .watcher-cam .watcher-label {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      background: rgba(255, 0, 0, 0.9);
+      color: #fff;
+      font-family: "Press Start 2P", monospace;
+      font-size: 0.48rem;
+      text-align: center;
+      padding: 0.4rem 0.2rem;
+      line-height: 1.35;
+      animation: blink-hard 0.8s steps(2) infinite;
+      z-index: 2;
+    }
+
+    @keyframes watcher-wobble {
+      0%, 100% { transform: rotate(-2deg) translateY(0); }
+      50% { transform: rotate(2deg) translateY(-4px); }
+    }
+
+    @media (max-width: 1100px) {
+      .luisgaara-side {
+        width: min(340px, 34vw);
+        height: min(88vh, 780px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .luisgaara-side {
+        width: min(260px, 32vw);
+        height: min(82vh, 640px);
+        left: 4px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .luisgaara-side {
+        width: min(150px, 34vw);
+        height: min(70vh, 420px);
+        left: 2px;
+      }
+      .watcher-cam {
+        width: min(200px, 48vw);
+        right: 10px;
+        bottom: 10px;
+      }
+    }
+
+    .video-clock {
+      margin: 0.75rem 0 0.35rem;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.7rem, 3vw, 1.1rem);
+      color: #0a0;
+      background: #000;
+      border: 3px solid #0f0;
+      padding: 0.65rem 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .video-clock.locked { color: #f33; border-color: #f33; }
+    .video-clock.ready { color: #0f0; border-color: #0f0; animation: blink-hard 0.6s steps(2) infinite; }
+
+    .video-progress {
+      height: 14px;
+      border: 3px inset #999;
+      background: #222;
+      margin: 0.5rem 0 0.85rem;
+      overflow: hidden;
+    }
+
+    .video-progress > span {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: repeating-linear-gradient(90deg, #ff0, #f0f, #0ff, #0f0, #ff0);
+      transition: width 0.2s linear;
+    }
+
+    #unlock-wishlist-btn {
+      font-family: "Silkscreen", monospace;
+      font-size: 1rem;
+      background: #666;
+      color: #ccc;
+      border: 4px outset #999;
+      padding: 0.7rem 1rem;
+      cursor: not-allowed;
+      width: 100%;
+      text-transform: uppercase;
+    }
+
+    #unlock-wishlist-btn.enabled {
+      background: linear-gradient(#ffff66, #ff9900);
+      color: #900;
+      border-color: #fff;
+      cursor: pointer;
+      animation: blink-hard 0.7s steps(2) infinite;
+    }
+
+    .wishlist.is-locked {
+      position: relative;
+      filter: grayscale(0.4);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .wishlist.is-locked::after {
+      content: "🔒 LISTA BLOQUEADA · MIRA EL VIDEO INTRO 🔒";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, 0.72);
+      color: #ff0;
+      font-family: "Press Start 2P", monospace;
+      font-size: clamp(0.45rem, 2vw, 0.7rem);
+      text-align: center;
+      padding: 1rem;
+      z-index: 4;
+      line-height: 1.6;
+    }
+
+    /* floating deco */
+    .snowflake {
+      position: fixed;
+      top: -20px;
+      color: #fff;
+      font-size: 1rem;
+      pointer-events: none;
+      z-index: 50;
+      animation: fall linear forwards;
+      text-shadow: 0 0 4px #fff;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.2;
+      }
+    }
+
+    hr.rainbow {
+      height: 8px;
+      border: 0;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+      margin: 1rem 0;
+    }
+
+    .construction {
+      display: inline-block;
+      background: #000;
+      color: #ff0;
+      font-family: "Press Start 2P", monospace;
+      font-size: 0.5rem;
+      padding: 0.4rem;
+      border: 2px solid #ff0;
+      animation: blink-hard 1.2s steps(2) infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="gate">
+    <div class="gate-box">
+      <h1>★ BIENVENIDO A MI BLOG ★</h1>
+      <p>
+        ~*~ sitio oficial de <b>Navidad Otaku 2000</b> ~*~<br />
+        haz click para ver mi página kawaii de navidad ☆
+      </p>
+      <button id="enter-btn" type="button">► ENTRAR AL BLOG ◄</button>
+    </div>
+  </div>
+
+  <div class="top-banner">ONLINE · BEST VIEWED IN NETSCAPE 4.7 · 800x600</div>
+
+  <aside class="mona-side left" aria-hidden="true">
+    <img class="m1" src="assets/monas/full01.png" alt="" />
+    <img class="m2" src="assets/monas/full12.png" alt="" />
+    <img class="m3" src="assets/monas/full23.png" alt="" />
+    <img class="m4" src="assets/monas/full04.png" alt="" />
+    <img class="m5" src="assets/monas/full15.png" alt="" />
+    <img class="m6" src="assets/monas/full26.png" alt="" />
+    <img class="m7" src="assets/monas/full07.png" alt="" />
+    <img class="m8" src="assets/monas/full18.png" alt="" />
+    <img class="m9" src="assets/monas/full29.png" alt="" />
+    <img class="m10" src="assets/monas/full10.png" alt="" />
+    <img class="m11" src="assets/monas/full21.png" alt="" />
+    <img class="m12" src="assets/monas/full02.png" alt="" />
+    <img class="m13" src="assets/monas/full13.png" alt="" />
+    <img class="m14" src="assets/monas/full24.png" alt="" />
+    <img class="m15" src="assets/monas/full05.png" alt="" />
+    <img class="m16" src="assets/monas/full16.png" alt="" />
+    <img class="m17" src="assets/monas/full27.png" alt="" />
+    <img class="m18" src="assets/monas/full08.png" alt="" />
+    <img class="m19" src="assets/monas/full19.png" alt="" />
+    <img class="m20" src="assets/monas/full30.png" alt="" />
+    <img class="m21" src="assets/monas/full11.png" alt="" />
+    <img class="m22" src="assets/monas/full22.png" alt="" />
+    <img class="m23" src="assets/monas/full03.png" alt="" />
+    <img class="m24" src="assets/monas/full14.png" alt="" />
+    <img class="m25" src="assets/monas/full25.png" alt="" />
+    <img class="m26" src="assets/monas/full06.png" alt="" />
+    <img class="m27" src="assets/monas/full17.png" alt="" />
+    <img class="m28" src="assets/monas/full28.png" alt="" />
+    <img class="m29" src="assets/monas/full09.png" alt="" />
+    <img class="m30" src="assets/monas/full20.png" alt="" />
+    <img class="m31" src="assets/monas/full01.png" alt="" />
+    <img class="m32" src="assets/monas/full12.png" alt="" />
+    <img class="m33" src="assets/monas/full23.png" alt="" />
+    <img class="m34" src="assets/monas/full04.png" alt="" />
+    <img class="m35" src="assets/monas/full15.png" alt="" />
+    <img class="m36" src="assets/monas/full26.png" alt="" />
+    <img class="m37" src="assets/monas/full07.png" alt="" />
+    <img class="m38" src="assets/monas/full18.png" alt="" />
+    <img class="m39" src="assets/monas/full29.png" alt="" />
+    <img class="m40" src="assets/monas/full10.png" alt="" />
+    <img class="m41" src="assets/monas/full21.png" alt="" />
+    <img class="m42" src="assets/monas/full02.png" alt="" />
+    <img class="m43" src="assets/monas/full13.png" alt="" />
+    <img class="m44" src="assets/monas/full24.png" alt="" />
+    <img class="m45" src="assets/monas/full05.png" alt="" />
+    <img class="m46" src="assets/monas/full16.png" alt="" />
+    <img class="m47" src="assets/monas/full27.png" alt="" />
+    <img class="m48" src="assets/monas/full08.png" alt="" />
+    <img class="m49" src="assets/monas/full19.png" alt="" />
+    <img class="m50" src="assets/monas/full30.png" alt="" />
+    <img class="m51" src="assets/monas/full11.png" alt="" />
+    <img class="m52" src="assets/monas/full22.png" alt="" />
+    <img class="m53" src="assets/monas/full03.png" alt="" />
+    <img class="m54" src="assets/monas/full14.png" alt="" />
+    <img class="m55" src="assets/monas/full25.png" alt="" />
+    <img class="m56" src="assets/monas/full06.png" alt="" />
+  </aside>
+
+  <aside class="mona-side right" aria-hidden="true">
+    <img class="m1" src="assets/monas/full04.png" alt="" />
+    <img class="m2" src="assets/monas/full15.png" alt="" />
+    <img class="m3" src="assets/monas/full26.png" alt="" />
+    <img class="m4" src="assets/monas/full07.png" alt="" />
+    <img class="m5" src="assets/monas/full18.png" alt="" />
+    <img class="m6" src="assets/monas/full29.png" alt="" />
+    <img class="m7" src="assets/monas/full10.png" alt="" />
+    <img class="m8" src="assets/monas/full21.png" alt="" />
+    <img class="m9" src="assets/monas/full02.png" alt="" />
+    <img class="m10" src="assets/monas/full13.png" alt="" />
+    <img class="m11" src="assets/monas/full24.png" alt="" />
+    <img class="m12" src="assets/monas/full05.png" alt="" />
+    <img class="m13" src="assets/monas/full16.png" alt="" />
+    <img class="m14" src="assets/monas/full27.png" alt="" />
+    <img class="m15" src="assets/monas/full08.png" alt="" />
+    <img class="m16" src="assets/monas/full19.png" alt="" />
+    <img class="m17" src="assets/monas/full30.png" alt="" />
+    <img class="m18" src="assets/monas/full11.png" alt="" />
+    <img class="m19" src="assets/monas/full22.png" alt="" />
+    <img class="m20" src="assets/monas/full03.png" alt="" />
+    <img class="m21" src="assets/monas/full14.png" alt="" />
+    <img class="m22" src="assets/monas/full25.png" alt="" />
+    <img class="m23" src="assets/monas/full06.png" alt="" />
+    <img class="m24" src="assets/monas/full17.png" alt="" />
+    <img class="m25" src="assets/monas/full28.png" alt="" />
+    <img class="m26" src="assets/monas/full09.png" alt="" />
+    <img class="m27" src="assets/monas/full20.png" alt="" />
+    <img class="m28" src="assets/monas/full01.png" alt="" />
+    <img class="m29" src="assets/monas/full12.png" alt="" />
+    <img class="m30" src="assets/monas/full23.png" alt="" />
+    <img class="m31" src="assets/monas/full04.png" alt="" />
+    <img class="m32" src="assets/monas/full15.png" alt="" />
+    <img class="m33" src="assets/monas/full26.png" alt="" />
+    <img class="m34" src="assets/monas/full07.png" alt="" />
+    <img class="m35" src="assets/monas/full18.png" alt="" />
+    <img class="m36" src="assets/monas/full29.png" alt="" />
+    <img class="m37" src="assets/monas/full10.png" alt="" />
+    <img class="m38" src="assets/monas/full21.png" alt="" />
+    <img class="m39" src="assets/monas/full02.png" alt="" />
+    <img class="m40" src="assets/monas/full13.png" alt="" />
+    <img class="m41" src="assets/monas/full24.png" alt="" />
+    <img class="m42" src="assets/monas/full05.png" alt="" />
+    <img class="m43" src="assets/monas/full16.png" alt="" />
+    <img class="m44" src="assets/monas/full27.png" alt="" />
+    <img class="m45" src="assets/monas/full08.png" alt="" />
+    <img class="m46" src="assets/monas/full19.png" alt="" />
+    <img class="m47" src="assets/monas/full30.png" alt="" />
+    <img class="m48" src="assets/monas/full11.png" alt="" />
+    <img class="m49" src="assets/monas/full22.png" alt="" />
+    <img class="m50" src="assets/monas/full03.png" alt="" />
+    <img class="m51" src="assets/monas/full14.png" alt="" />
+    <img class="m52" src="assets/monas/full25.png" alt="" />
+    <img class="m53" src="assets/monas/full06.png" alt="" />
+    <img class="m54" src="assets/monas/full17.png" alt="" />
+    <img class="m55" src="assets/monas/full28.png" alt="" />
+    <img class="m56" src="assets/monas/full09.png" alt="" />
+  </aside>
+
+
+
+  <marquee scrollamount="10" behavior="scroll">
+    ★★★ FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO ★★★ REENVÍA ESTE MENSAJE A 20 AMIGOS O TENDRÁS 7 AÑOS DE MALA SUERTE ★★★ PADORU PADORU PADORU ★★★ SI NO REENVÍAS, SANTA BORRARÁ TU LISTA DE DESEOS ★★★ HASHIRE SORI YO ★★★
+  </marquee>
+
+  <div class="wrap">
+    <header class="site-header">
+      <p class="brand">PADORU☆BLOG</p>
+      <p class="subtitle">el diario otaku más kawaii de la navidad · actualizado: 24/DIC/2000</p>
+      <nav class="nav-links" aria-label="menu">
+        <a href="#spam">inicio</a>
+        <a href="#padoru">padoru</a>
+        <a href="#deseos">lista de deseos</a>
+        <a href="#blog">mi blog</a>
+        <a href="#guestbook">guestbook</a>
+      </nav>
+      <span class="construction">✿ UNDER CONSTRUCTION FOREVER ✿</span>
+    </header>
+
+    <hr class="rainbow" />
+
+    <section class="spam-wall" id="spam" aria-label="mensaje spam navideño">
+      <div class="spam-copies" aria-hidden="true">
+        FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · REENVÍA A TODOS · CADENA DE LA SUERTE · PADORU PADORU · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · NO ROMPAS LA CADENA · MERRY CHRISTMASU · PRÓSPERO AÑO NUEVO · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · REENVÍA A TODOS · CADENA DE LA SUERTE · PADORU PADORU · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · NO ROMPAS LA CADENA · MERRY CHRISTMASU · PRÓSPERO AÑO NUEVO ·
+        FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · REENVÍA A TODOS · CADENA DE LA SUERTE · PADORU PADORU · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · NO ROMPAS LA CADENA · MERRY CHRISTMASU · PRÓSPERO AÑO NUEVO · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · REENVÍA A TODOS · CADENA DE LA SUERTE · PADORU PADORU · FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO · NO ROMPAS LA CADENA · MERRY CHRISTMASU · PRÓSPERO AÑO NUEVO ·
+      </div>
+      <h1 class="spam-mega">
+        FELIZ NAVIDAD
+        <span>Y PRÓSPERO AÑO NUEVO!!!!!!!!!</span>
+      </h1>
+    </section>
+
+    <marquee scrollamount="14" direction="right" style="background:#c41e3a;color:#fff;">
+      ¡¡¡MENSAJE MASIVO DE NAVIDAD!!! · SI ESTÁS LEYENDO ESTO YA ES DEMASIADO TARDE · PADORU HA ENTRADO EN TU PC · ¡FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO! · ¡¡¡MENSAJE MASIVO DE NAVIDAD!!!
+    </marquee>
+
+    <section class="padoru-stage" id="padoru">
+      <h2>★ PADORU PADORU ★</h2>
+      <div class="padoru-row">
+        <img src="assets/padoru.gif" alt="Padoru Padoru animado" width="280" height="280" />
+        <img src="assets/padoru-group.gif" alt="Más padorus bailando" width="160" height="172" />
+        <img src="assets/padoru.gif" alt="Otro padoru" width="120" height="120" />
+      </div>
+      <p class="padoru-lyrics">
+        HASHIRE SORI YO<br />
+        KAZE NO YOU NI<br />
+        TSUKI MIHARA WO<br />
+        <b style="color:#ff0;font-size:1.4em;">PADORU PADORU</b>
+      </p>
+    </section>
+
+    <section class="wishlist is-locked" id="deseos">
+      <h2>★ MI LISTA DE DESEOS 2000 ★</h2>
+      <p class="note">
+        querido santa-san... click en <b>¡COMPRAR!</b> para el link real ~*~ porfis:
+      </p>
+      <div class="wish-grid">
+        <article class="wish-card">
+          <a class="thumb" href="https://www.amazon.com.mx/gp/product/B0B5S3TRBJ" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/xbox-stand.jpg" alt="Soporte vertical para Xbox Series X" />
+          </a>
+          <h3>Soporte vertical Xbox Series X <span class="priority">TOP 1</span></h3>
+          <p>stand / cooling tower para la consola. menos calor, más horas de juego en nochebuena.</p>
+          <span class="store">Amazon MX</span>
+          <a class="shop" href="https://www.amazon.com.mx/gp/product/B0B5S3TRBJ" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+
+        <article class="wish-card">
+          <a class="thumb" href="https://www.mercadolibre.com.mx/cuchillo-chef-profesional-cuchillo-santoku-cuchillo-de-cocina-de-8-pulgadas/p/MLM67175346" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/santoku.jpg" alt="Cuchillo Santoku chef 8 pulgadas" />
+          </a>
+          <h3>Cuchillo Santoku 8"</h3>
+          <p>cuchillo chef profesional estilo santoku. para picar como en anime de cocina.</p>
+          <span class="store">Mercado Libre</span>
+          <a class="shop" href="https://www.mercadolibre.com.mx/cuchillo-chef-profesional-cuchillo-santoku-cuchillo-de-cocina-de-8-pulgadas/p/MLM67175346" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+
+        <article class="wish-card">
+          <a class="thumb" href="https://www.mercadolibre.com.mx/cuchillo-chef-acero-damasco-profesional-cuchillos-de-cocina/p/MLM64896710" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/damasco.jpg" alt="Cuchillo chef acero damasco" />
+          </a>
+          <h3>Cuchillo chef acero damasco</h3>
+          <p>cuchillo profesional de cocina. el poder del acero legendario en tu cocina.</p>
+          <span class="store">Mercado Libre</span>
+          <a class="shop" href="https://www.mercadolibre.com.mx/cuchillo-chef-acero-damasco-profesional-cuchillos-de-cocina/p/MLM64896710" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+
+        <article class="wish-card">
+          <a class="thumb" href="https://www.mercadolibre.com.mx/audifonos-inalambricos-xiaomi-redmi-buds-8-lite-42-db-anc-bateria-36-horas-blanco/p/MLM63135410" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/buds.jpg" alt="Xiaomi Redmi Buds 8 Lite blancos" />
+          </a>
+          <h3>Xiaomi Redmi Buds 8 Lite</h3>
+          <p>audífonos inalámbricos blancos · ANC 42 dB · hasta 36 hrs. padoru directo al oído.</p>
+          <span class="store">Mercado Libre</span>
+          <a class="shop" href="https://www.mercadolibre.com.mx/audifonos-inalambricos-xiaomi-redmi-buds-8-lite-42-db-anc-bateria-36-horas-blanco/p/MLM63135410" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+
+        <article class="wish-card">
+          <a class="thumb" href="https://www.mercadolibre.com.mx/gel-de-limpieza-cerave-gel-de-limpeza-facial-dianoche-para-piel-normal-a-grasa-de-454g-18-anos/p/MLM26194700" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/cerave.jpg" alt="CeraVe gel de limpieza facial 454g" />
+          </a>
+          <h3>CeraVe gel limpieza facial</h3>
+          <p>gel de limpeza 454g día/noche · piel normal a grasa. glow-up de fin de año.</p>
+          <span class="store">Mercado Libre</span>
+          <a class="shop" href="https://www.mercadolibre.com.mx/gel-de-limpieza-cerave-gel-de-limpeza-facial-dianoche-para-piel-normal-a-grasa-de-454g-18-anos/p/MLM26194700" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+
+        <article class="wish-card">
+          <a class="thumb" href="https://sbdapparel.com.mx/products/sports-socks-calcetas-sentadilla-grises-forge" target="_blank" rel="noopener noreferrer">
+            <img src="assets/wishlist/sbd-socks.jpg" alt="Calcetas SBD sentadilla grises Forge" />
+          </a>
+          <h3>Calcetas SBD sentadilla (grises)</h3>
+          <p>sports socks Forge · para levantar peso y el espíritu navideño a la vez.</p>
+          <span class="store">SBD Apparel MX</span>
+          <a class="shop" href="https://sbdapparel.com.mx/products/sports-socks-calcetas-sentadilla-grises-forge" target="_blank" rel="noopener noreferrer">► ¡COMPRAR! ◄</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="blog" id="blog">
+      <h2>» last entries from my diary «</h2>
+      <article class="entry">
+        <h3>☆ 24 dic 2000 — ¡ya es nochebuena!</h3>
+        <p class="meta">posted by: yuki-chan · mood: &gt;w&lt; hyper · music: padoru.mid</p>
+        <p>
+          omg omg omg ya llegó la navidad!!!! decoré mi cuarto con papel aluminio y luces que se calientan demasiado.
+          mi hermana dice que mi blog es “cringe” pero ella no entiende el poder del <b>padoru</b>.
+        </p>
+        <p>
+          si Santa lee esto: deja los mangas debajo del árbol y NO apagues la música. thx ~☆
+        </p>
+      </article>
+      <article class="entry">
+        <h3>☆ 20 dic 2000 — cadena de la suerte OBLIGATORIA</h3>
+        <p class="meta">posted by: yuki-chan · mood: spam energy · music: jingle bells.exe</p>
+        <p>
+          REENVÍA ESTE MENSAJE A 20 PERSONAS o un duende otaku ensuciará tu dial-up.
+          Los que sí lo reenvíen recibirán:
+        </p>
+        <p>
+          1) un crush que conteste el messenger<br />
+          2) ediciones limitadas<br />
+          3) <b>FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO</b> de verdad de verdad
+        </p>
+      </article>
+    </section>
+
+    <div class="bits">
+      <div class="bit">
+        <h3>visitor counter</h3>
+        <div class="counter" id="counter">0001337</div>
+        <p style="margin:0.5rem 0 0;font-size:0.85rem;">ustedes + padoru = familia</p>
+      </div>
+      <div class="bit" id="guestbook">
+        <h3>guestbook</h3>
+        <p style="margin:0;font-size:0.9rem;">
+          “padoru forever” — anon_99<br />
+          “feliz navidad spam king” — xX_neo_Xx<br />
+          “kawaii desu ne~~” — help_me
+        </p>
+      </div>
+    </div>
+
+    <div class="webring">
+      <b>✿ anime christmas webring ✿</b><br />
+      [&lt;&lt; prev] · [random] · [next &gt;&gt;]<br />
+      member #0007 of <i>PADORU PADORU RING</i>
+    </div>
+
+    <footer>
+      <p class="blink">★ FELIZ NAVIDAD Y PRÓSPERO AÑO NUEVO ★</p>
+      <p>
+        © 2000 padoru-blog.geo · no rights reserved · powered by friendship y dial-up
+      </p>
+    </footer>
+  </div>
+
+  <div id="video-trap" role="dialog" aria-modal="true" aria-labelledby="video-trap-title">
+    <div class="video-trap-box">
+      <h2 id="video-trap-title">⚠ INTRO OBLIGATORIA ⚠</h2>
+      <p class="spam-line">NO PUEDES CERRAR ESTO · MIRA 30 SEGUNDOS · LISTA DE REGALOS BLOQUEADA</p>
+      <div class="video-frame">
+        <video
+          id="intro-player"
+          src="assets/intro/raruto-op.mp4"
+          controls
+          playsinline
+          preload="auto"
+        ></video>
+      </div>
+      <div class="video-clock locked" id="video-clock">⏱ 00:00 / 00:30 · ESPERANDO PLAY…</div>
+      <div class="video-progress" aria-hidden="true"><span id="video-progress-bar"></span></div>
+      <button id="unlock-wishlist-btn" type="button" disabled>
+        🔒 VER LISTA DE REGALOS (falta tiempo)
+      </button>
+      <p style="margin:0.65rem 0 0;font-size:0.85rem;color:#666;">
+        el reloj solo cuenta mientras el video se está reproduciendo
+      </p>
+    </div>
+    <div class="luisgaara-side" aria-hidden="true">
+      <img src="assets/intro/luisgaara.jpg" alt="LuisGaara" />
+      <div class="gaara-label">★ LUISGAARA ★</div>
+    </div>
+    <div class="watcher-cam" aria-hidden="true">
+      <div class="watcher-label">● LIVE · TE ESTÁN VIENDO</div>
+      <video
+        id="watcher-player"
+        src="assets/intro/watcher.mp4"
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+    </div>
+  </div>
+
+  <audio id="padoru-audio" loop preload="auto" playsinline>
+    <source src="assets/audio/padoru.mp3" type="audio/mpeg" />
+    <source src="assets/audio/padoru.m4a" type="audio/mp4" />
+  </audio>
+
+  <script>
+    (function () {
+      var REQUIRED_SECS = 30;
+
+      var gate = document.getElementById("gate");
+      var btn = document.getElementById("enter-btn");
+      var videoTrap = document.getElementById("video-trap");
+      var clockEl = document.getElementById("video-clock");
+      var progressBar = document.getElementById("video-progress-bar");
+      var unlockBtn = document.getElementById("unlock-wishlist-btn");
+      var wishlist = document.getElementById("deseos");
+      var introVideo = document.getElementById("intro-player");
+      var watcherVideo = document.getElementById("watcher-player");
+      var padoruAudio = document.getElementById("padoru-audio");
+
+      var started = false;
+      var wishlistUnlocked = false;
+      var introOpen = false;
+      var watchedMs = 0;
+      var lastTick = 0;
+      var introPlaying = false;
+      var tickTimer = null;
+
+      function syncWatcher(shouldPlay) {
+        if (!watcherVideo) return;
+        try {
+          watcherVideo.muted = true;
+          watcherVideo.loop = true;
+          if (shouldPlay) {
+            var p = watcherVideo.play();
+            if (p && typeof p.catch === "function") p.catch(function () {});
+          } else {
+            watcherVideo.pause();
+          }
+        } catch (e) {}
+      }
+
+      function pad2(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function formatClock(sec) {
+        var s = Math.max(0, Math.floor(sec));
+        return pad2(Math.floor(s / 60)) + ":" + pad2(s % 60);
+      }
+
+      function forcePadoru() {
+        if (!started || introOpen || !wishlistUnlocked) return;
+        if (!padoruAudio) return;
+        try {
+          padoruAudio.muted = false;
+          padoruAudio.volume = 1;
+          if (padoruAudio.paused) {
+            var p = padoruAudio.play();
+            if (p && typeof p.catch === "function") p.catch(function () {});
+          }
+        } catch (e) {}
+      }
+
+      function pausePadoru() {
+        if (!padoruAudio) return;
+        try { padoruAudio.pause(); } catch (e) {}
+      }
+
+      function updateClockUI() {
+        var watched = watchedMs / 1000;
+        var left = Math.max(0, REQUIRED_SECS - watched);
+        var pct = Math.min(100, (watched / REQUIRED_SECS) * 100);
+        progressBar.style.width = pct + "%";
+
+        if (watched >= REQUIRED_SECS) {
+          clockEl.className = "video-clock ready";
+          clockEl.textContent = "✓ 00:30 / 00:30 · DESBLOQUEADO";
+          unlockBtn.disabled = false;
+          unlockBtn.classList.add("enabled");
+          unlockBtn.textContent = "► ENTRAR A LA LISTA DE REGALOS ◄";
+          return;
+        }
+
+        clockEl.className = "video-clock locked";
+        if (!introPlaying && watched === 0) {
+          clockEl.textContent = "⏱ 00:00 / 00:30 · DALE PLAY AL VIDEO";
+        } else if (!introPlaying) {
+          clockEl.textContent = "⏸ " + formatClock(watched) + " / 00:30 · PAUSADO (" + formatClock(left) + " resto)";
+        } else {
+          clockEl.textContent = "▶ " + formatClock(watched) + " / 00:30 · FALTAN " + formatClock(left);
+        }
+        unlockBtn.disabled = true;
+        unlockBtn.classList.remove("enabled");
+        unlockBtn.textContent = "🔒 VER LISTA DE REGALOS (falta " + Math.ceil(left) + "s)";
+      }
+
+      function tickWatch() {
+        if (!introOpen || wishlistUnlocked) return;
+        var now = Date.now();
+        if (introPlaying && !introVideo.paused && !introVideo.ended) {
+          if (!lastTick) lastTick = now;
+          watchedMs += now - lastTick;
+          lastTick = now;
+          if (watchedMs >= REQUIRED_SECS * 1000) {
+            watchedMs = REQUIRED_SECS * 1000;
+            introPlaying = false;
+          }
+        } else {
+          lastTick = 0;
+        }
+        updateClockUI();
+      }
+
+      function tryPlayIntro() {
+        if (!introVideo) return;
+        introVideo.muted = false;
+        introVideo.volume = 1;
+        var p = introVideo.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(function () {
+            // autoplay bloqueado: el usuario debe dar play manual
+            updateClockUI();
+          });
+        }
+        // la cam de esquina puede empezar muteada (autoplay ok)
+        syncWatcher(true);
+      }
+
+      function openIntroTrap() {
+        if (wishlistUnlocked || introOpen) return;
+        introOpen = true;
+        videoTrap.classList.add("open");
+        pausePadoru();
+        document.body.style.overflow = "hidden";
+        updateClockUI();
+        if (!tickTimer) tickTimer = setInterval(tickWatch, 200);
+        tryPlayIntro();
+      }
+
+      function unlockWishlist() {
+        if (watchedMs < REQUIRED_SECS * 1000) return;
+        wishlistUnlocked = true;
+        introOpen = false;
+        videoTrap.classList.remove("open");
+        document.body.style.overflow = "";
+        wishlist.classList.remove("is-locked");
+        if (tickTimer) {
+          clearInterval(tickTimer);
+          tickTimer = null;
+        }
+        try { introVideo.pause(); } catch (e) {}
+        syncWatcher(false);
+        try {
+          if (watcherVideo) {
+            watcherVideo.pause();
+            watcherVideo.currentTime = 0;
+          }
+        } catch (e) {}
+        forcePadoru();
+        wishlist.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function startChaos() {
+        if (started) return;
+        started = true;
+        gate.classList.add("gone");
+        openIntroTrap();
+      }
+
+      btn.addEventListener("click", startChaos);
+      unlockBtn.addEventListener("click", unlockWishlist);
+
+      introVideo.addEventListener("play", function () {
+        introPlaying = true;
+        lastTick = Date.now();
+        syncWatcher(true);
+        updateClockUI();
+      });
+      introVideo.addEventListener("playing", function () {
+        introPlaying = true;
+        lastTick = Date.now();
+        syncWatcher(true);
+        updateClockUI();
+      });
+      introVideo.addEventListener("pause", function () {
+        introPlaying = false;
+        lastTick = 0;
+        syncWatcher(false);
+        updateClockUI();
+      });
+      introVideo.addEventListener("ended", function () {
+        // raruto corto: reiniciar para seguir contando los 30s
+        introPlaying = false;
+        lastTick = 0;
+        try {
+          introVideo.currentTime = 0;
+          introVideo.play();
+        } catch (e) {}
+        syncWatcher(true);
+        updateClockUI();
+      });
+      introVideo.addEventListener("waiting", function () {
+        introPlaying = false;
+        lastTick = 0;
+      });
+
+      // por si el atributo loop falla, forzar reinicio de la cam
+      if (watcherVideo) {
+        watcherVideo.addEventListener("ended", function () {
+          try {
+            watcherVideo.currentTime = 0;
+            if (introOpen) syncWatcher(true);
+          } catch (e) {}
+        });
+      }
+
+      document.querySelectorAll('a[href="#deseos"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          if (wishlistUnlocked) return;
+          e.preventDefault();
+          if (!started) startChaos();
+          else openIntroTrap();
+        });
+      });
+
+      if ("IntersectionObserver" in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && started && !wishlistUnlocked) openIntroTrap();
+          });
+        }, { threshold: 0.15 });
+        obs.observe(wishlist);
+      }
+
+      videoTrap.addEventListener("click", function (e) {
+        if (e.target === videoTrap) e.stopPropagation();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (introOpen && (e.key === "Escape" || e.keyCode === 27)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+
+      // Si pausan o bajan volumen, forzar otra vez (offline, sin YouTube)
+      padoruAudio.addEventListener("pause", function () {
+        if (wishlistUnlocked && !introOpen) setTimeout(forcePadoru, 120);
+      });
+      padoruAudio.addEventListener("volumechange", function () {
+        if (!wishlistUnlocked || introOpen) return;
+        if (padoruAudio.muted || padoruAudio.volume < 1) {
+          padoruAudio.muted = false;
+          padoruAudio.volume = 1;
+        }
+      });
+      padoruAudio.addEventListener("ended", function () {
+        // por si el atributo loop falla en algún browser
+        if (wishlistUnlocked && !introOpen) {
+          try {
+            padoruAudio.currentTime = 0;
+            forcePadoru();
+          } catch (e) {}
+        }
+      });
+
+      document.addEventListener("click", function () {
+        if (wishlistUnlocked && !introOpen) forcePadoru();
+      });
+      document.addEventListener("keydown", function () {
+        if (wishlistUnlocked && !introOpen) forcePadoru();
+      });
+      setInterval(function () {
+        if (wishlistUnlocked && !introOpen) forcePadoru();
+      }, 1200);
+
+      // Contador fake estilo 2000
+      var c = document.getElementById("counter");
+      var n = 1337 + Math.floor(Math.random() * 400);
+      function paintCounter() {
+        c.textContent = String(n).padStart(7, "0");
+        n += Math.random() > 0.7 ? 1 : 0;
+      }
+      paintCounter();
+      setInterval(paintCounter, 5000);
+
+      // Nieve / estrellitas
+      function spawnFlake() {
+        var el = document.createElement("div");
+        el.className = "snowflake";
+        el.textContent = Math.random() > 0.5 ? "❄" : "★";
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.fontSize = 0.7 + Math.random() * 1.2 + "rem";
+        el.style.animationDuration = 6 + Math.random() * 8 + "s";
+        document.body.appendChild(el);
+        setTimeout(function () { el.remove(); }, 15000);
+      }
+      setInterval(spawnFlake, 350);
+    })();
+  </script>
+</body>
+</html>
