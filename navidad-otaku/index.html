@@ -2,10 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1080" />
   <title>★☆ PADORU BLOG ☆★ ~*Feliz Navidad Otaku 2000*~</title>
   <link rel="stylesheet" href="assets/fonts/local-fonts.css" />
   <style>
+    /* Forzar layout escritorio ~1080px (sensación web años 2000 en móvil) */
+    html { min-width: 1080px; }
+
     :root {
       --bg-hot: #ff69b4;
       --bg-red: #c41e3a;
@@ -253,7 +256,7 @@
     .mona-side.right .m55 { left: -31.3%; top: 91.6%; width: 80.5%; transform: rotate(-29.5deg); z-index: 1; }
     .mona-side.right .m56 { left: 11.5%; top: 92.8%; width: 80.7%; transform: rotate(-23.7deg); z-index: 2; }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 900px) {
       .wrap { --content-w: 760px; }
       .mona-side { --gutter-content: 760px; }
     }
@@ -879,7 +882,7 @@
       50% { transform: rotate(2deg) translateY(-4px); }
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 900px) {
       .luisgaara-side {
         width: min(340px, 34vw);
         height: min(88vh, 780px);

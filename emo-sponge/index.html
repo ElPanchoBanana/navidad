@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"><title>~*~ xX_Lista_De_Regalos_Xx ~*~ MySpace</title>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=1080" /><title>~*~ xX_Lista_De_Regalos_Xx ~*~ MySpace</title>
 <style>
+    /* Forzar layout escritorio ~1080px (sensación web años 2000 en móvil) */
+    html { min-width: 1080px; }
+
 body{margin:0;background:#000 repeating-conic-gradient(#ff1493 0 25%,#000 0 50%) 0 0/40px 40px;font-family:"Comic Sans MS","Verdana",sans-serif;color:#fff;cursor:crosshair}
 #dial{position:fixed;inset:0;background:#c0c0c0;color:#000;font-family:"Times New Roman",serif;z-index:99;padding:20px}
 #dial .bar{border:2px inset #fff;height:20px;width:400px;background:#fff}#dial .fill{height:100%;width:0;background:#000080}
@@ -17,8 +21,9 @@ h1{font-family:"Times New Roman";text-align:center;color:#0f0;text-shadow:0 0 6p
 @keyframes reveal{to{clip-path:inset(0 0 0 0)}}
 .pix{image-rendering:pixelated;width:100%;filter:blur(3px);animation:sharp 9s steps(6) forwards}
 @keyframes sharp{to{filter:none}}
-.gift{display:flex;gap:8px;border:1px dashed #0f0;padding:6px;margin:6px 0;opacity:0}
-.gift .ico{font-size:34px}.gift b{color:#0f0}
+.gift{display:flex;gap:8px;border:1px dashed #0f0;padding:6px;margin:6px 0;opacity:0;color:#fff;text-decoration:none}
+.gift:hover{background:#1a1a1a;border-color:#ff1493}
+.gift .ico{font-size:34px}.gift b{color:#0f0}.gift .go{color:#ff69b4}
 marquee{color:#ff69b4;font-weight:bold}
 .online{color:#0f0;font-weight:bold}
 #ad{display:none;position:fixed;top:120px;left:50%;transform:translateX(-50%);width:420px;background:#ff0;color:#000;border:6px outset #f00;z-index:50;font-family:Arial;text-align:center;padding:10px;animation:shake .2s infinite}
@@ -45,10 +50,10 @@ marquee{color:#ff69b4;font-weight:bold}
   <h1>~*~ FeLiZ NaViDaD ~*~</h1>
   <marquee scrollamount="3">🎄 ★ xOxO Feliz Navidad a todos mis friends ★ deja un comment pls ★ 🎄</marquee>
   <div class="box"><h3>:: Mi Lista De Regalos ::</h3><div id="list">
-   <div class="gift"><span class="ico">💿</span><div><b>1. CD de Fall Out Boy</b><br>edición especial, porque el mundo no me entiende</div></div>
-   <div class="gift"><span class="ico">🖤</span><div><b>2. Delineador negro x10</b><br>para llorar con estilo</div></div>
-   <div class="gift"><span class="ico">👟</span><div><b>3. Converse negros con calaveras</b><br>talla 9, cuadros rosas si hay</div></div>
-   <div class="gift"><span class="ico">📱</span><div><b>4. Sidekick con tapa giratoria</b><br>para actualizar mi MySpace desde la piña</div></div>
+   <a class="gift" href="https://www.amazon.com.mx/Colgador-Montaje-Viol%C3%ADn-Soporte-Estudio/dp/B0D3Z23Z9N/ref=sr_1_7?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=9TFIOOM4B9VZ&dib=eyJ2IjoiMSJ9.ZzoGCZ1UdSVGY5YGoZj2kHfqY9FgAEVr8TCPwl4id2GbDP8uGm3SsucBtk74LTsfEK09qfdCtUoXckvUkBhyHdKFr0zh_ecycwKHXNHiU9fBeI-wt3A1uj09RPcYJa3dR7hCj1brpcBxtIZNZZryyXEnUhdWehnV9W_zByi0R5AtgYA0tJNE4_kz5FAbYeeeumlnJWzU3cfLx5yHM2bGzp2imvLwpQ07Kp1G1pdH8JCxBN096pNWd6DsB-JFcZnohOMxbSWawT6JG3Y1RRj_Vb--1aGE0HK2faYbNiFY5eE.PZW_wxBWbtOHhTOhcICJZCHYv7Y1aJxcuo4ptaTBq8Y&dib_tag=se&keywords=ensordecedora%2Bpara%2Bviolin&qid=1794589821&sprefix=ensordecedora%2Bpara%2Bviolin%2Caps%2C125&sr=8-7&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b&th=1" target="_blank" rel="noopener noreferrer"><span class="ico">🎻</span><div><b>1. Ensordecedor / colgador para violín</b><br>para practicar sin que me odie el vecino<span class="go"><br>» ver en Amazon</span></div></a>
+   <a class="gift" href="https://www.amazon.com.mx/Pok%C3%A9mon-PKW4699-Pulgadas-Peluche-Estilo/dp/B0D6PGZF18/?_encoding=UTF8&pd_rd_w=bzIQc&content-id=amzn1.sym.e667d78f-203d-4078-aba2-ad4a297fdc25&pf_rd_p=e667d78f-203d-4078-aba2-ad4a297fdc25&pf_rd_r=JYMHQMN96RT1HJ0458CK&pd_rd_wg=NeeGV&pd_rd_r=14922abe-76ec-4af7-88e2-8dbd3cbcc2c5&ref_=pd_hp_d_r_btf_dealz_mlc" target="_blank" rel="noopener noreferrer"><span class="ico">🧸</span><div><b>2. Peluche Pokémon</b><br>porque necesito abrazar algo que no me juzgue<span class="go"><br>» ver en Amazon</span></div></a>
+   <a class="gift" href="https://www.amazon.com.mx/LISEN-Compatible-Cargador-Samsung-Macbook/dp/B0HCZDPBLH/ref=sr_1_2_sspa?crid=ROISG5C0LMNG&dib=eyJ2IjoiMSJ9.2IUtzBjHX81Nx1sxKgiW3cyUpfzWEwtYxe3ITQno5GRmjXZ2pbg8RDi6gYGQfDwH6kNeIDBqBEO_oe0-JKokDge35Nf_W86HDjix4IN2lqXQ7cPRXg4Phe3OmVAxhqihBwitANq2pjy-HpQ9FWFFQFaEUxAl303mdJ6Jd_7PPNI95F9waP_rFh7pEeqjwdJzMGZstHqH6dLrL-gRXHqTnmEemtulafZfW7uw1CMFjRQp_SGXNnAii0zW7oBLM-ePz2UjVU_HsueAD5UmxTbuSBc6d4Nos7oFeNd_769YHUs.456DCgYo7MIIE09FciCuR2R9EbcU0MmsLNBOvQOctD8&dib_tag=se&keywords=cable%2Busb%2Bc&qid=1794590590&sprefix=cable%2Bus%2Caps%2C143&sr=8-2-spons&ufe=app_do%3Aamzn1.fos.06fa9770-d92c-4c52-90c1-2e1c2a45e1df&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&th=1" target="_blank" rel="noopener noreferrer"><span class="ico">🔌</span><div><b>3. Cable USB-C LISEN</b><br>compatible con casi todo, como mi tristeza<span class="go"><br>» ver en Amazon</span></div></a>
+   <a class="gift" href="https://www.amazon.com.mx/Funko-Pop-Collectible-Toy-Figure/dp/B0CCBW7BP2/ref=sr_1_16?__mk_es_MX=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3C6JKQRWN7MVB&dib=eyJ2IjoiMSJ9.4MZCtrJZfxuK6yHJtb9sEBv9Mj9ueGq5ZXFZVEH8-vs-SwSPvZFnUcO5mEJM_SWhejmTWbVWh3ohbNxRn0pjF2ppmy5C3CpgLXjhZbTBxzJH07tRdwaSZTCdhzBAXJNlOkRS_08CrXetI12WB9RzCbzvqQs14VR0EwWmf06q7NANEz2AmUAR-4Ic5Gww0FvSugiVbGpiI0XEsOlj2JAzMorB7ORknFuU98G2f2CV4vYxx3fXe9RrxV4_S1vxTlOwaytpLkiCpZLYlBHkSs-kvjbffR3cgVq6EaLkMaCYbRI.6KUjtQZz1fGk-cQqiCBHjNVj9q25sNXcsJNb06fM8s8&dib_tag=se&keywords=Funko+Pop%21+pokemon&qid=1794590731&s=toys&sprefix=funko+pop+pokemon%2Ctoys%2C133&sr=1-16&ufe=app_do%3Aamzn1.fos.59b9ca31-8c37-415d-a24c-f08a5874dc5c" target="_blank" rel="noopener noreferrer"><span class="ico">📦</span><div><b>4. Funko Pop! Pokémon</b><br>coleccionable para mi altar emo<span class="go"><br>» ver en Amazon</span></div></a>
   </div></div>
   <div class="box slow" style="animation-delay:5s"><h3>Comments (2)</h3><div><b>Patricio:</b> feliz navidad amigo!!! 🌟<br><b>Calamardo:</b> ...ugh.</div></div>
  </div>

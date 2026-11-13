@@ -1,3 +1,8 @@
+/* Forzar layout escritorio 1080px incluso en móvil */
+html {
+  min-width: 1080px;
+}
+
 /* ===== MSN Messenger Navidad 2000 — estética Windows 2000 / MSN clásico ===== */
 
 @font-face {

@@ -1,3 +1,8 @@
+/* Forzar layout escritorio 1080px incluso en móvil */
+html {
+  min-width: 1080px;
+}
+
 :root {
   --x-yellow: #f7d117;
   --x-yellow-dark: #c9a600;

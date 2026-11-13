@@ -3,6 +3,10 @@
   var enterBtn = document.getElementById("enter-btn");
   var cnt = document.getElementById("cnt");
   var snow = document.getElementById("snow");
+  var theme = new Audio("assets/xmen-theme.mp3");
+  theme.loop = true;
+  theme.preload = "auto";
+  theme.volume = 0.55;
 
   function seedSnow() {
     if (!snow) return;
@@ -33,9 +37,15 @@
     }, 55);
   }
 
+  function playTheme() {
+    var p = theme.play();
+    if (p && typeof p.catch === "function") p.catch(function () {});
+  }
+
   function openSite() {
     if (gate) gate.classList.add("gone");
     runCounter();
+    playTheme();
   }
 
   if (enterBtn) {
@@ -46,6 +56,14 @@
   try {
     if (sessionStorage.getItem("xmen-entered") === "1") {
       openSite();
+      // autoplay may be blocked without a fresh gesture; unlock on first click
+      document.addEventListener(
+        "click",
+        function () {
+          playTheme();
+        },
+        { once: true }
+      );
     } else if (enterBtn) {
       enterBtn.addEventListener(
         "click",

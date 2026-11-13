@@ -10,7 +10,7 @@ const places = [
     lat: 20.667888,
     lng: -103.270144,
     photo: "photos/yetz.png",
-    href: null, // página pendiente
+    href: "https://navida-lovat.vercel.app/",
   },
   {
     id: "yaser",

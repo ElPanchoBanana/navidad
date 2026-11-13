@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=1080" />
   <title>Navidad — Mapa de regalos</title>
   <meta name="description" content="Mapa navideño: encuentra a cada persona y abre su página de regalos." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -10,6 +10,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/maplibre-gl@5.0.1/dist/maplibre-gl.css" rel="stylesheet" />
   <link rel="stylesheet" href="hub.css" />
+<style>
+    /* Forzar layout escritorio ~1080px (sensación web años 2000 en móvil) */
+    html { min-width: 1080px; }
+</style>
 </head>
 <body>
   <div id="map" role="application" aria-label="Mapa de Navidad"></div>

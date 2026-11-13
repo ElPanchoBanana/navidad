@@ -1,3 +1,8 @@
+/* Desktop-forced 1080 layout for y2k hub */
+html {
+  min-width: 1080px;
+}
+
 :root {
   --ink: #1a2433;
   --snow: #f4f7fb;
@@ -47,7 +52,7 @@ body {
   z-index: 2;
   top: clamp(1rem, 3vw, 2rem);
   left: clamp(1rem, 3vw, 2rem);
-  max-width: min(28rem, calc(100vw - 2rem));
+  max-width: 28rem;
   pointer-events: none;
   animation: hud-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s both;
 }
