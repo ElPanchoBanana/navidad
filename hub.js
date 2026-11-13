@@ -6,7 +6,8 @@
 const places = [
   {
     id: "yetz",
-    name: "Yetz",
+    name: "Yetzrai",
+    label: "Yetzrai",
     lat: 20.667888,
     lng: -103.270144,
     photo: "photos/yetz.png",
@@ -15,6 +16,7 @@ const places = [
   {
     id: "yaser",
     name: "Yaser",
+    label: "Yaser",
     lat: 20.668251,
     lng: -103.312812,
     photo: "photos/yaser.png",
@@ -22,7 +24,8 @@ const places = [
   },
   {
     id: "luis-avalos",
-    name: "Luis Avalos",
+    name: "L-Avalos",
+    label: "L-Avalos",
     lat: 20.593646,
     lng: -103.372316,
     photo: "photos/luis-avalos.png",
@@ -30,7 +33,8 @@ const places = [
   },
   {
     id: "luis-juarez",
-    name: "Luis Juárez",
+    name: "L-Juarez",
+    label: "L-Juarez",
     lat: 20.77686,
     lng: -103.399438,
     photo: "photos/luis-juarez.png",
@@ -39,6 +43,7 @@ const places = [
   {
     id: "ernesto",
     name: "Ernesto",
+    label: "Ernesto",
     lat: 20.76096,
     lng: -103.3968,
     photo: "photos/ernesto.png",
@@ -47,6 +52,7 @@ const places = [
   {
     id: "adrian",
     name: "Adrian",
+    label: "Adrian",
     lat: 20.798961,
     lng: -103.474481,
     photo: "photos/adrian.png",
@@ -73,24 +79,27 @@ function makeMarkerElement(place) {
   const el = document.createElement("button");
   el.type = "button";
   el.className = "person-marker";
-  el.title = place.name;
-  el.setAttribute("aria-label", place.name);
+  el.title = place.label || place.name;
+  el.setAttribute("aria-label", place.label || place.name);
   el.dataset.placeId = place.id;
+
+  const tag = document.createElement("span");
+  tag.className = "person-marker__label";
+  tag.textContent = place.label || place.name;
+  el.appendChild(tag);
 
   const img = document.createElement("img");
   img.className = "person-marker__img";
   img.src = place.photo;
-  img.alt = place.name;
+  img.alt = place.label || place.name;
   img.decoding = "async";
   img.addEventListener("error", () => {
     el.classList.add("is-fallback");
     img.remove();
-    el.textContent = place.name
-      .split(/\s+/)
-      .map((w) => w[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
+    const fallback = document.createElement("span");
+    fallback.className = "person-marker__fallback";
+    fallback.textContent = (place.label || place.name).slice(0, 2).toUpperCase();
+    el.appendChild(fallback);
   });
   el.appendChild(img);
 
@@ -157,7 +166,7 @@ function setPlacePhoto(id, photoUrl) {
 function initMap() {
   const map = new maplibregl.Map({
     container: "map",
-    style: "https://tiles.openfreemap.org/styles/dark",
+    style: "https://tiles.openfreemap.org/styles/fiord",
     center: [-103.3496, 20.6597],
     zoom: 10.5,
     pitch: 28,
@@ -177,5 +186,30 @@ function initMap() {
   window.setPlacePhoto = setPlacePhoto;
 }
 
+function initHubMusic() {
+  const theme = new Audio("assets/hub-theme.mp3");
+  theme.loop = true;
+  theme.preload = "auto";
+  theme.volume = 0.5;
+
+  const tryPlay = () => {
+    const p = theme.play();
+    if (p && typeof p.catch === "function") p.catch(function () {});
+  };
+
+  // Intento automático; si el navegador bloquea, se desbloquea al primer toque
+  tryPlay();
+  const unlock = () => {
+    tryPlay();
+    document.removeEventListener("click", unlock);
+    document.removeEventListener("touchstart", unlock);
+  };
+  document.addEventListener("click", unlock);
+  document.addEventListener("touchstart", unlock, { passive: true });
+
+  window.hubTheme = theme;
+}
+
 seedSnow();
 initMap();
+initHubMusic();
